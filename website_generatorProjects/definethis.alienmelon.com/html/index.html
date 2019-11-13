@@ -1,0 +1,217 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>interesting definition....</title>
+
+<script>
+	
+	//very simple generator
+	//this just uses some randomly assembled arrays
+	//arrays consist of some commonly used words
+	//and that is all
+	var arr_pre = ["girly", "james", "down", "bitch", "slut", "pink", "punk", "subvert", "fuck", "stitch", "nonfun", "fun", "rough", "garage", "garbage", "trash", "glitch", "skeleton", "lady", "reserved", "clear", "sludge", "ascend", "queen", "ice", "fuckall", "neon", "cyber", "hack", "dermy", "derivative", "desktop", "app", "shit", "prude", "indie", "metal", "charge", "electric", "love", "bison", "diva", "madonna", "root", "grief", "crash", "burn", "video", "yellowbrick", "post-DOS", "3D", "2D", "dungeon", "crawler", "post-alt", "doorway", "gateway", "dick", "girl", "antisocial", "introvert", "clit", "chitchat", "kitsch", "hole", "data", "buzzard", "bizarre", "surreal", "weird", "wrong", "pointless", "beer", "nuclear", "naughty", "click", "rave", "drug", "LSD", "trip", "druggy", "crack", "buzzed", "agencyless", "agency", "walking", "sitting", "mood", "simulator", "riot", "horror", "glitchpunk", "pussypunk", "tiny", "art", "glitchart", "wave", "gun", "pussy", "wtf", "shit", "rad", "web", "fuck", "hack", "glitch", "sass", "acid", "magic", "lucy", "fetish", "block"];
+	var arr_preGame = ["blood", "gore", "gut", "gib", "head", "guts", "boom", "splode", "terror", "meat", "kill", "doom", "death", "skull", "skeleton", "nuclear", "blood", "abdomen", "cramp", "juice", "clot", "goblin", "brain", "memory", "shit", "acid", "LSD", "stoner", "fetish"];
+	var arr_mergeWith = ["alt", "she", "anti", "non", "un", "neu", "nero", "fake", "new", "old", "fuck", "pre", "diva", "sub", "can't", "don't", "won't", "no", "not", "crash", "bad", "good", "wrong", "post", "high", "pro", "super", "false", "fake"];
+	var arr_after = ["icide", "pocalypse", "ate", "d", "like", "like", "like", "-like", "rd", "hard", "trip", "ish", "ly", "y", "soft", "s", "", "", "", "", "", ""];
+	
+	var arr_intro = ["A good name for this would be:", "This game is a:", "This is a:", "This game is best described as a:", "I will call it a:", "This is best described as a:"];
+	var arr_colors = ["#0000AE", "#0000AE", "#0000AE", "#66FF00", "#66FF99", "#6633FF", "#00FF00", "#FF9900", "#FF99CC", "#0000FF", "#FF00FF", "#33CC99", "#00FFFF", "#FF0000", "#FF9933", "#99CC00", "#99FF00"];
+	var arr_bodyColors = ["#0000FF", "#0033FF", "#0066FF", "#0099FF", "#333300", "#336600", "#339900", "#6633FF", "#9900FF", "#CC3300", "#CC0000", "#CC6600", "#CC9900"];
+	
+	var arr_skelertns = ["Untitled-5.gif", "Untitled-6.gif", "Untitled-7.gif", "Untitled-8.gif", "Untitled-9.gif", "Untitled-10.gif", "Untitled-11.gif", "Untitled-12.gif", "Untitled-13.gif", "Untitled-14.gif", "Untitled-15.gif"];
+	
+	//misc
+	var writeInt = 0;//interval
+	
+	var snd_type01 = new Audio('audio/AUD_SEQ13_DRAW_01.wav');
+	var snd_type02 = new Audio('audio/AUD_SEQ13_DRAW_02.wav');
+	var snd_type03 = new Audio('audio/AUD_SEQ13_DRAW_03.wav');
+	var snd_type04 = new Audio('audio/AUD_SEQ13_DRAW_04.wav');
+	var snd_type05 = new Audio('audio/AUD_SEQ13_DRAW_05.wav');
+	var snd_done = new Audio('audio/AUD_SEQ13_PAINTSELECT_06.wav');
+	var snd_click = new Audio('audio/AUD_SEQ13_UI_CLICK_FULL.wav');
+	var snd_bootup = new Audio('audio/AUD_ERRORCOLLECT_01.wav');
+	
+	//Write out text
+	function writeText(myText) {
+		var i = 0;
+		function write() {
+			if (i<=myText.length) {
+				document.getElementById("description").innerHTML = myText.substr(0, i)+"_";
+				randTypeSnd();
+				i = i+1;
+			} else {
+				document.getElementById("description").innerHTML =  myText.substr(0, i);
+				snd_done.play();
+				clearInterval(writeInt);
+			}
+		}
+		clearInterval(writeInt);
+		writeInt = setInterval(write, 40);
+	}
+	
+	function randTypeSnd(){
+		var arr_snds = [snd_type01, snd_type02, snd_type03, snd_type04, snd_type05];
+		arr_snds[Math.ceil(Math.random()*arr_snds.length)-1].play();
+	}
+	
+	function randArr(arr){
+		return arr[Math.ceil(Math.random()*arr.length)-1];
+	}
+	function randSpace(){
+		if(Math.random()*100 > 80){
+			return "-";
+		}else if(Math.random()*100 > 50){
+			return " ";
+		}else{
+			return "";
+		}
+	}
+	function randSuper(){
+		if(Math.random()*100 > 80){
+			return "bitch";
+		}else if(Math.random()*100 > 50){
+			return "pussy";
+		}else if(Math.random()*100 > 30){
+			return "skeleton";
+		}else{
+			return "";
+		}
+	}
+	function returnWord(arr){
+		if(Math.random()*100 > 50){
+			return String(arr[Math.ceil(Math.random()*arr.length)-1]) + randSpace();
+		}else{
+			return "";
+		}
+	}
+	
+	function return_results(){
+		var arr_generate = [
+			randArr(arr_mergeWith) + "-" + randArr(arr_pre) + " " + randArr(arr_pre) + " " + randArr(arr_preGame) + "game" + randArr(arr_after), 
+			randArr(arr_mergeWith) + "-" + randArr(arr_pre) + " game" + randArr(arr_after), 
+			randSuper() + " " + randArr(arr_pre) + randArr(arr_pre) + " game" + randArr(arr_after), 
+			randSuper() + " " + randArr(arr_preGame) + "game" + randArr(arr_after), 
+			randArr(arr_pre) + "-" + randArr(arr_preGame) + " game" + randArr(arr_after), 
+			randArr(arr_mergeWith) + "-" + randArr(arr_pre) + returnWord(arr_pre) + " " + "game", 
+			randArr(arr_pre) + " " + randSuper() + randSpace() + randArr(arr_preGame) + "game" + randArr(arr_after), 
+			returnWord(arr_pre) + returnWord(arr_preGame) + returnWord(arr_mergeWith) + "game" + randArr(arr_after)
+		];
+		//return ("<center>" + randArr(arr_intro) + "<br><br>" + arr_generate[Math.ceil(Math.random()*arr_generate.length)-1] + "</center>");
+		return ("<center>" + arr_generate[Math.ceil(Math.random()*arr_generate.length)-1] + "</center>").toUpperCase();
+	}
+	
+	function _start(){
+		document.getElementById("another").style.backgroundColor = arr_colors[Math.ceil(Math.random()*arr_colors.length)-1];
+		document.getElementById("description").style.backgroundColor = arr_bodyColors[Math.ceil(Math.random()*arr_bodyColors.length)-1];
+		document.getElementById("description").style.outlineColor = arr_colors[Math.ceil(Math.random()*arr_colors.length)-1];
+		//document.getElementById("description").style.color = "black";//arr_colors[Math.ceil(Math.random()*arr_colors.length)-1];
+		//
+		//arr_skelertns
+		document.getElementById("id_skeletons").innerHTML = "<img src='images/" + arr_skelertns[Math.ceil(Math.random()*arr_skelertns.length)-1] + "' alt=''>";
+		//
+		writeText(return_results());
+	}
+
+	function _init(){
+		document.getElementById("id_skeletons").innerHTML = "<img src='images/" + arr_skelertns[Math.ceil(Math.random()*arr_skelertns.length)-1] + "' alt=''>";
+		snd_bootup.play();
+		//clicking
+		document.getElementById("another").onclick = function(){
+			snd_click.play();
+			_start();
+			document.getElementById("another").innerHTML = "NO! GIVE ME ANOTHER!";
+			document.getElementById("start").visible = "hidden";
+		};
+	};
+	
+</script>
+
+<style>
+	/*fave font*/
+	@font-face {
+		font-family: 'fixedsys_excelsior_3.01Rg';
+		src: url('fontquirrels/fsex300-webfont.eot');
+		src: url('fontquirrels/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('fontquirrels/fsex300-webfont.woff') format('woff'),
+			 url('fontquirrels/fsex300-webfont.ttf') format('truetype'),
+			 url('fontquirrels/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+	/*Images for the scene*/
+	.skeletons img{
+		position: absolute; 
+		top: 0; 
+		left: 0; 
+		right: 0; 
+		bottom: 0;
+		margin: auto; 
+		min-width: 100%;
+		min-height: 100%;
+	}
+	/*pixel all images*/
+	img{
+		image-rendering: auto;
+		image-rendering: crisp-edges;
+		image-rendering: pixelated;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: -o-crisp-edges;
+		-ms-interpolation-mode: nearest-neighbor;
+	}
+	#description{
+		position:fixed;
+		background: #0000AE;
+		padding: 20px;
+		border: 5px solid white; 
+  		outline: 20px solid #0000AE;
+		box-shadow: 40px 40px 0px black;
+		
+		left: 50%;
+		top: 50%;
+		/*lazy centering*/
+		-webkit-transform: translate(-50%, -50%);
+    	transform: translate(-50%, -50%);
+	}
+	.selection{
+		position:fixed;
+		background-color: #FF33FF;
+		left: 50%;
+		bottom: 5px;
+		transform: translate3d(-50%,-50%, 0);
+		/*font-size:25px;*/
+		cursor: url('images/IMG_SKELETON.gif'), auto;
+	}
+	
+	body{
+		color:white;
+		font-family: 'fixedsys_excelsior_3.01Rg', monaco, monospace;
+		font-size: 30px;
+		cursor: url('images/IMG_SKELETON_CLICK.gif'), auto;
+		
+	}
+</style>
+
+</head>
+
+<body onload="_init()">
+
+	<div class="skeletons" id="id_skeletons">
+		<!-- <img src="images/Untitled-5.gif" alt=""> -->
+	</div>
+	
+	<div id="description">
+	Welcome to the game definition generator! For when you're not sure what you want to call your game, and you don't want to say 'alt' or 'weird' for many complicated and artistically nuanced reasons.
+	</div>
+	
+	<div id="start" class="selection">
+	
+	</div>
+	
+	<span id="another" class="selection">
+		CLICK HERE to start generating ideas.
+	</span>
+	
+</body>
+</html>

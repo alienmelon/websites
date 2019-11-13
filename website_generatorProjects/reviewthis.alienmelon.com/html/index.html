@@ -1,0 +1,230 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>instant game reviews 2k30 (note: some reviews may require grammar editing)</title>
+
+<script>
+	function _init(){
+		/*
+		game review generator
+		when nobody is writing about your game but you want intelligent, insightful, and complicated things said about what you created
+		*/
+		//dictionary and phrases (...so is it audiosyncratic or idiosyncratic??)
+		var arr_dictionary = ["sluggish", "comedies", "failure", "loops", "magic circle", "pulp", "modernism", "fun", "opportunistic", "instrumental", "good game design", "punch lines", "jokes", "passive waiting", "comedy", "part of the problem", "experiences", "subjective experiences", "games themselves", "naive", "hopeful", "glossy", "glossy machines", "machines", "experience", "games themselves", "part of the problem", "machine-like", "assumptions", "understand", "interesting way", "tripple-A", "naive", "indie", "hopeful", "glossy machines", "cynical about what games can achieve", "opens up new channels", "critical thinking", "definitions", "surpasses definition", "rhetoric", "idiosyncratic personal interpretations", "interpretation", "videogame culture", "creates emotional resonance", "dissects issues", "didactic", "fixation on entertainment", "the expense of substance", "culture wars", "fun as a goal", "completely wrong", "seemingly simplistic", "earnest and subversive", "cute, funny, entertainment", "revealing humanity", "instrumental", "opportunistic in intention", "directed toward the subject", "illuminate", "engaged seriousness", "escapism", "slapstick", "comedic hyperbole", "gameplay goals", "sound", "aesthetics", "lull the player in", "make the player feel safe", "subvert the player's expectations", "heartbreaking", "tragic", "dark", "sublime", "appeal to the player's humanity", "bait and switch", "intimate and vulnerable", "typically opportunistic game design", "typically instrumental game design", "corresponding outlines", "not central", "a solution to some problem", "too many goals", "not enough goals", "loud colors", "upbeat music", "seduces the player", "removes power", "challenges power", "constructs", "upbeat", "a little disturbing", "detaches the player", "feeling impact", "subversive", "challenges mechanics", "simple mechanics", "despite surreality", "the use of horror", "the use of humor", "resonant", "disempowers the player", "precarious", "scarce", "cultural factors", "freeing", "connected players", "player connection", "empathy simulator", "stands in important contrast", "game-based conceptual art", "created outside of the boundaries", "a product of mainstream culture trends ", "resistant to the influences of mainstream culture", "embracing the influences of mainstream culture", "technique", "unconventional aesthetic", "unconventional", "a provocative influence", "a pioneering influence", "art", "art for the sake of art", "audiosyncratic", "autocratic forms of gameplay", "syncretic", "idiosyncratic"];
+		//join sentences (start with)
+		var arr_joinWith = ["the joke is that", "because", "before long", "despite", "nevertheless", "albeit", "although", "in either case", "for instance", "it becomes apparent that", "which is firmly rooted in", "it then goes to", "it then follows that", "in terms of premise", "it goes to show that", "for example", "at any rate"];
+		
+		//backgrounds
+		var arr_skelertns = ["Untitled-5.gif", "Untitled-15.gif"];
+		
+		var aud_bootup = new Audio("audio/aah.mp3");
+		var aud_done = new Audio("audio/blip3.mp3");
+		
+		//var aud_uType01 = new Audio("audio/tri_sine_uknwn1a.mp3");
+		var aud_uType02 = new Audio("audio/tri_sine_uknwn2a.mp3");
+		
+		var snd_type01 = new Audio("audio/tri_sine1a.mp3");
+		var snd_type02 = new Audio("audio/tri_sine2a.mp3");
+		var snd_type03 = new Audio("audio/tri_sine3a.mp3");
+		var snd_type04 = new Audio("audio/tri_sine4a.mp3");
+		
+		var arr_sndType = [snd_type01, snd_type02, snd_type03, snd_type04];
+		
+		var str_name = "";
+		var str_review = "";
+		var writeInt = 0;//interval
+		
+		//Write out text
+		function writeText(myText) {
+			var i = 0;
+			function write() {
+				if (i<=myText.length) {
+					document.getElementById("review").innerHTML = myText.substr(0, i)+"_";
+					randTypeSnd();
+					i = i+1;
+				} else {
+					document.getElementById("review").innerHTML =  myText.substr(0, i);
+					sndDone();
+					clearInterval(writeInt);
+				}
+			}
+			clearInterval(writeInt);
+			writeInt = setInterval(write, 40);
+		}
+		
+		//sound
+		function randTypeSnd(){
+			arr_sndType[Math.ceil(Math.random()*arr_sndType.length)-1].play();
+		}
+		//finished typing
+		function sndDone(){
+			aud_done.play();
+		}
+		
+		//return an array element
+		function randA(arr) {
+			return arr[Math.ceil(Math.random() * arr.length) - 1];
+		}
+		
+		//compile this insightful review
+		function compileReview(){
+			var arr_reviews = [
+				randA(arr_dictionary) + " and " + randA(arr_dictionary) + " that has " + randA(arr_dictionary) + " with " + randA(arr_dictionary) + " it merges " + randA(arr_dictionary) + " into " + randA(arr_dictionary) + ". " + randA(arr_joinWith) + ", while it has " + randA(arr_dictionary) + ", it does this to " + randA(arr_dictionary) + ".", 
+				randA(arr_dictionary) + " and " + randA(arr_dictionary) + " as " + randA(arr_dictionary) + "-isms, it does this while " + randA(arr_dictionary) + ", " + randA(arr_joinWith) + " it has " + randA(arr_dictionary) + " that is " + randA(arr_dictionary) + ".", 
+				randA(arr_dictionary) + " and " + randA(arr_dictionary) + " as " + randA(arr_dictionary) + "-isms."
+			];
+			//return it
+			//return arr_reviews[Math.ceil(Math.random()*arr_reviews.length)-1];
+			str_review = ("<center><span style='color:red'>" + str_name + " is...</span></center><br>" + arr_reviews[Math.ceil(Math.random()*arr_reviews.length)-1]).toUpperCase();
+			writeText(str_review);
+		}
+		
+		//clicks
+		document.onmousedown = function() { 
+			aud_uType02.play();
+		};
+		
+		//background image
+		function randImg(){
+			document.body.style.background = "url('images/" + arr_skelertns[Math.ceil(Math.random()*arr_skelertns.length)-1] +"')";
+		}
+		
+		//very hip swoosh effect!
+		function _hideStart(){
+			//go swoosh!
+    		document.getElementById("_start").style.transform = "matrix(-9, 0, -9, 1, -1, 1)";
+    		document.getElementById("_start").style.transitionDuration = "0.9s"
+			document.getElementById("_start").addEventListener('transitionend', _doneSwooshing(), false);
+			//
+			document.getElementById("review").style.visibility = "visible";
+			document.getElementById("another").style.visibility = "visible";
+			compileReview();
+		};	
+		//it is done swooshing now generate
+		function _doneSwooshing(event){
+			//console.log("done");
+			//console.log("generate here");
+		}
+		//submit name and start generator
+		function _start(){
+			if(document.getElementById("game_name").value != ""){
+				str_name = document.getElementById("game_name").value;
+				_hideStart();
+			}
+		}
+		//start button
+		document.getElementById("submit").addEventListener("click", function(){
+			this.removeEventListener("click", arguments.callee);
+			_start();
+			//console.log("CLICK");
+		});
+		//generate another button
+		document.getElementById("another").addEventListener("click", function(){
+			compileReview();
+			randImg();
+		});
+		
+		//init
+		document.getElementById("review").style.visibility = "hidden";
+		document.getElementById("another").style.visibility = "hidden";
+		randImg();
+		aud_bootup.play();
+	}
+</script>
+
+<style>
+	/*fave font again ^^*/
+	@font-face {
+		font-family: 'fixedsys_excelsior_3.01Rg';
+		src: url('fontquirrels/fsex300-webfont.eot');
+		src: url('fontquirrels/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+			 url('fontquirrels/fsex300-webfont.woff') format('woff'),
+			 url('fontquirrels/fsex300-webfont.ttf') format('truetype'),
+			 url('fontquirrels/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+		font-weight: normal;
+		font-style: normal;
+	}
+	/*page main*/
+	body{
+		color:white;
+		background-color:black;
+		font-family: 'fixedsys_excelsior_3.01Rg', monaco, monospace;
+		font-size: 30px;
+		cursor: url('images/IMG_SKELETON_CLICK.gif'), auto;
+		background-image: url("images/Untitled-15.gif");
+	}
+	/*form*/
+	input{
+		color:black;
+		font-family: 'fixedsys_excelsior_3.01Rg', monaco, monospace;
+		font-size: 50px;
+		cursor: url('images/IMG_SKELETON.gif'), auto;
+	}
+	/*anything clickable fx here?*/
+	.skeletonclick{
+		cursor: url('images/IMG_SKELETON_BTN.gif'), auto;
+	}
+	/*all images*/
+	img{
+		image-rendering: auto;
+		image-rendering: crisp-edges;
+		image-rendering: pixelated;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: -o-crisp-edges;
+		-ms-interpolation-mode: nearest-neighbor;
+	}
+	/*non generated*/
+	._nongen{
+		position:fixed;
+		background: #0000AE;
+		padding: 20px;
+		border: 5px solid white; 
+  		outline: 20px solid #0000AE;
+		box-shadow: 40px 40px 0px black;
+		
+		left: 50%;
+		top: 50%;
+		/*lazy centering*/
+		-webkit-transform: translate(-50%, -50%);
+    	transform: translate(-50%, -50%);
+	}
+	.selection{
+		position:fixed;
+		background-color: #FF33FF;
+		left: 50%;
+		bottom: 10px;
+		transform: translate3d(-50%,-50%, 0);
+		cursor: url('images/IMG_SKELETON.gif'), auto;
+	}
+</style>
+
+</head>
+
+<body onload="_init();">
+	
+	<div class="_nongen" id="_start">
+		<center> Welcome to the game review generator!</center>
+		For when nobody is writing about your game but you want intelligent, insightful, and complicated things said about what you created.
+		<br><br>
+		<center>
+		YOUR GAME NAME:
+		<br>
+		<input type="text" id="game_name" value="">
+		<br>
+		<img src="images/IMG_SUBMIT.gif" alt="" id="submit" class="skeletonclick">
+		</center>
+		<span style="font-size: 11px">(note: some reviews may require grammar editing)</span>
+	</div>
+	
+	<div id="review" class="_nongen">
+		<!-- stuff goes in here -->
+	</div>
+	
+	<span id="another" class="selection">
+		NO! GIVE ME ANOTHER!
+	</span>
+	
+</body>
+
+</html>

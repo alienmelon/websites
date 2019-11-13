@@ -1,0 +1,238 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Shit! I can't enhance. They encoded the image with ANTI-PIXELS!</title>
+<script>
+
+	/*
+	this is a sci-fi tech jargon generator
+	just like how movies or tv keep getting it wrong
+	*/
+	
+	//misc
+	
+	writeInt = 0;//interval
+	
+	function randTypeSnd(){
+		var arr_typesnd = ["snd_type01", "snd_type02", "snd_type04"];
+		var snd = document.getElementById(arr_typesnd[Math.ceil(Math.random()*arr_typesnd.length)-1]);
+		snd.volume = 0.05;
+		snd.play()
+	}
+	
+	//Write out text
+	function writeText(myText, myTextField) {
+		var i = 0;
+		function write() {
+			if (i<=myText.length) {
+				document.getElementById("jargon").innerHTML = myText.substr(0, i)+"_";
+				randTypeSnd();
+				i = i+1;
+				//
+			} else {
+				document.getElementById("jargon").innerHTML =  myText.substr(0, i);
+				clearInterval(writeInt);
+			}
+		}
+		clearInterval(writeInt);
+		writeInt = setInterval(write, 40);
+	}
+	
+	//basic...
+	function return_arr(arr){
+		return arr[Math.ceil(Math.random()*arr.length)-1];
+	}
+	//used mostly for descriptions
+	//either return or not
+	function return_randAdj(arr){
+		var str = "";
+		if(Math.random()*100>50){
+			str = arr[Math.ceil(Math.random()*arr.length)-1];
+		}else{
+			str = "";
+		}
+		return str;
+	};
+	
+	//the meat of it!
+	//code...
+	//lower your expectations:
+	
+	//verbs
+	var arr_verb01 = ["access", "log", "type cast", "make a function call", "call this function", "trace()", "console log", "log", "deactivate", "activate", "call()", "return", "inherit", "parse", "object orient", "remove", "remove line breaks", "hypercharge", "charge", "lock", "electrify", "express", "block", "unblock", "share", "livecast", "screencast", "screenshot", "bake", "hack", "vandalize", "expand", "guide", "bypass", "enumerate", "pass", "argue", "numerate", "number", "capture", "free", "call", "use", "unsubscribe", "condition", "boolean operate", "append", "prepend", "switch", "finalize", "default", "vocalize", "decompile", "auto decompile", "introduce", "code", "code block", "block", "make", "create", "swap", "insert", "append", "destruct", "construct", "review", "call", "standardize", "stream", "ransom", "resuscitate", "revive", "terminate", "destroy", "explode", "hide", "file", "I/O", "return()", "output", "unhack", "block", "inherit", "feed", "subscribe", "unsubscribe", "aggregate", "compose", "assign", "increment++", "decrement--", "increment", "decrement", "compare", "typecast", "copy", "math", "calculate", "arithmetic", "overload", "dehostile", "befriend", "host", "ftp", "ftp", "ftp", "upload", "serve", "convolute", "hide", "recast", "classify", "class member", "class", "welcome", "argue", "command", "exit", "set visible to false", "set visible to true", "assert", "error", "handle", "behave", "stack", "vector", "point", "reference", "address", "value", "heap", "stack", "switch", "unlock", "locate", "bypass", "pass", "pass parameters", "define these parameters", "overload", "function", "argue", "enumerate", "if condition", "for each", "delete", "allocate", "loop", "string", "undefine", "null", "nullify", "point", "sort", "cast", "chat", "convolute", "randomize", "randomize", "continue", "break", "switch", "state", "flow", "control", "define", "name", "introduce", "structure", "define", "type define", "enumerate", "link", "time", "namespace", "scope", "define scope", "state", "unblock", "convert", "operate", "break", "scope", "line break", "model", "specify", "spy", "spyapp", "applet", "design", "coreinject", "attack", "neutralize", "kill", "doom", "circle", "core", "write", "tag", "#import", "import", "export", "unzip", "compress", "break", "deprecate", "process", "attack", "inject", "write", "grant", "access", "inhibit", "install", "hold", "structure", "object orient", "object orient", "type", "functional program", "cast", "loop through", "overload", "delete", "regexp", "unblock", "block", "disable", "warn", "browse", "unhack", "hack", "decode", "uncode", "program", "teach", "learn", "VM", "comment", "stream", "unload", "download", "uncomment", "reboot", "shutdown", "powerup", "drive", "nuke", "terminate", "kill", "doom", "re-compile", "compile", "call", "unload", "preload", "git", "github", "pull request", "request", "push", "write", "read", "enhancing", "reticulating", "reticulate", "triggered", "trigger", "triggering", "transcode", "threaten", "neutralize", "network", "backup", "hack", "shader", "filter", "pixelate", "transpile", "transcode", "encode", "write a shader", "passcode", "pass", "virus scan", "scan", "infiltrate", "bypass", "create", "pass", "administrate", "sysadmin", "access grant", "access deny", "access", "destroy", "disable", "turbo charge", "charge", "read", "push", "assemble", "loop", "loop", "mark as unread", "express", "typecast", "cast", "code", "code", "program", "program", "resize", "scale", "soldier", "minimize", "maximize", "hardwarehack", "open", "close", "blowup", "shoot", "uninstall", "install", "preload", "play", "start", "stop", "reticulate", "build", "compress", "bake", "tweak", "kill", "terminate", "downscale", "scale", "install", "vertex", "flip horizontally", "reticulate", "malware", "flip", "blow up", "plant", "enhance", "enhance", "enhance", "enhance", "enhance", "hack", "hack", "hack", "hax", "hackhack", "doublehack", "tripplehack", "tripple", "bandwidth", "megahack"];
+	
+	
+	//basic nouns
+	var arr_noun01 = ["interface", "DOS", "prompt", "network", "shell", "file input", "input", "file stream", "linux", "unix system", "unix", "codeblock", "line", "block of code", "code", "lang", "readme", "readme.txt", "manual", "tutorial", "build", "library", "format", "mp4", "codec", "math", "physics", "simulation", "class", "OOP", "object", "constructor", "static", "member", "hyperlink", "timer", "interval", "link", "statement", "vertex", "magic circle", "relic", "civilization", "microchips", "microchip", "process", "core mainframe", "plug-in", "terminal", "shader", "shaders", "build", "mercenaries", "woman", "man", "vehicle", "boat", "ship", "tablet", "digitizer", "mousepad", "doors", "door", "lock", "keylock", "keypad", "button", "touchscreen", "phones", "phone", "satellites", "satellite", "marines", "code", "machineguns", "integers", "obfuscator", "computer", "spaceship", "heavy artillery", "artillery", "guns", "preprocessor", "war cohort", "war army", "war machine", "spline", "function", "compiler", "IDE", "integrated development environment", "C/C++", "ware", "ransomware", "GUI", "malware", "virus", "Trojan", "zombie", "army", "torrent", "monster", "monsters", "bad guy", "cohort", "language", "assembly", "JS", "VB", "compiler", "unicode", "AR", "VR", "programming", "network", "neural network", "machine", "DNA", "mind", "brain", "AI", "NPC's", "NPC", "robot", "robots", "army", "gun", "guns", "weapon", "weapons", "weapons", "weapons", "weapons", "lasers", "lasers", "lasers", "lasers", "Lua", "laser", "cannons", "cannon", "laser", "spaceship", "starship", "osx", "windows", "men", "women", "exception", "memory", "character sequence", "CSS", "tag", "template", "structure", "comments", "internet", "tubes", "web", "world wide web", "internets", "website", "intranet", "net", "operator", "front-end", "back-end", "MySQL Database", "operators", "binary", "data", "type", "flag", "output", "input", "variables", "programs", "constructs", "pascal", "software", "program", "FTP", "var", "development environment", "design", "game design", "black box", "circuit board", "circuit", "circuits", "integrated circuits", "box", "design specifications", "magic circle", "HUD", "ASCII", "runtime", "unicode", "mainframe", "core mainframe", "plug-in", "plugin", "mother ship", "browser extension", "browser", "algorithm", "microchip", "microchips", "inhibitor", "wares", "mall-ware", "mallware", "anti-virus", "virus", "loop", "boolean", "preloaders", "vertices", "drive", "hard-drive", "bleeps and bloops", "ones and zeroes", "format", "formats", "arrays", "machine", "VM", "physical terrain", "script", "HTML", "frame", "iframe", "loader", "preloader", "vertices", "operating system", "processor", "word processor", "password", "binary", "terrain", "splines", "ice-tsunami", "memory card", "CPU", "hashtags", "processor", "microprocessor", "system", "network", "neural network", "array", "variable", "boolean loop", "loop", "expression", "regular expression", "regex", "pixels", "Anti-pixels", "DNA", "patch", "ship", "mothership", "spaceship", "carburetor", "API", "design specifications", "capacitor", "HTML5", "specifications", "sandbox", "code", "code", "programming", "C++", "C", "malware", "lasers", "vertexes", "turret", "anti-virus", "force field", "field", "runtime", "GUI", "Visual Basic", "engine", "game engine", "software development kit", "SDK", "Direct3D", "reapers", "reaper", "OpenGL", "WebGL", "console", "texture compression", "admin", "sysadmin", "system administrator", "administrator", "Basic", "Pascal", "Java", "script", "boolean", "ACCESS DENIED", "ACCESS GRANTED", "lasers", "force field", "capacitor", "const", "constexpr", "constants", "gasoline", "motor", "warp drive", "hyper drive", "engine", "engines", "box", "monsters", "aliens", "alien", "beast", "armor", "knives", "swords", "php", "files", "server", "C#", "network", "circuit", "circuits"];
+	
+	
+	//descriptions to pre-pend
+	var arr_adj01 = ["file", "linux", "unix system", "rapidfire", "mega-", "formatted", "RSS", "simulated", "math", "hostile", "anonymous", "public", "private", "command", "arguments", "undefined", "multidimensional", "virtual", "hyper-", "conditional", "bitwise", "doomed", "flawed", "broken", "ancient", "deprecated", "compatible", "warning", "invisible", "masked", "cloaked", "mercenary", "assembly", "php", "html", "java", "perl", "lua", "pascal", "basic", "visual basic", "C", "C++", "C#", ".NET", "GNU", "apache", "war-", "MySQL", "SQL", "wingding", "webding", "wingdings", "unicode", "symbolic", "const-", "formatted", "integrated", "open", "open source", "rapid fire", "obfuscated", "space-", "war-", "AI", "zombie", "bad", "decompiled", "compiled", "uncompiled", "flagged", "virtual", "VM", "operating", "2D", "3D", "4D", "enhanced", "physical", "reticulated", "blocked", "encoded", "turbo", "charged", "multi-platform", "compressed", "bump mapped", "invisible", "installed", "vertex", "reticulate", "basic", "mobile", "post compiled", "post-", "pre compiled", "compiled", "binary", "pre-", "unmapped", "mapped", "cast", "baked", "raw", "polymorphed", "morphed", "pre-", "native", "classic", "root", "root-", "global-", "global", "master", "boot", "boot-", "shadered", "vertexed", "good", "bad", "infected", "reticulated", "variabled", "programmed", "constant", "operator", "fluctuated", "verticled", "vertices", "strictly typed", "verticed", "control structures", "basic", "input/output", "overloaded", "templated", "visible", "invisible", "false", "true", "data typed", "strongly typed", "loosely typed", "poorly typed", "typed", "arrayed", "character sequenced", "pointed", "dynamic", "dynamic memoried", "dynamic memorized", "saved", "unloaded", "deleted", "preloaded", "cached", "uploaded", "deloaded", "reloaded", "sub-saved", "adapted", "cast", "sandboxed", "virtual machined", "overwritten", "virtual", "clean", "clear", "refreshed", "rebooted", "booted", "over-ride", "classed", "special", "inherited", "polymorphed", "converted", "conversion", "loaded", "accepted", "rejected", "exception", "preprocessed", "processed", "postprocessed", "deleted", "delete-", "subprocessed", "deprocessed", "compressed", "primitive", "legacy", "uncompressed", "decompressed", "mal-compressed", "mal-", "mal", "malwared", "next gen", "nextgen", "modern", "standardized", "wared", "expressed", "regexpressed", "type converted", "input", "output", "binary", "machine-learned", "machine-", "responsive", "dynamic", "strict", "scalable", "AI-", "sub-binary", "sub-", "filed", "file", "systemed", "preloaded", "preloadered", "ascii", "coded", "encoded", "decoded", "recoded", "compressioned", "compressed", "inflated", "plugin enabled", "enabled"];
+	
+	
+	//variation of the word change
+	var arr_change_variant = ["change", "swap", "toggle"];
+	
+	//save this to str_verb_save and call/update whenever needed
+	//save a verb for multiple references in a sentence
+	function return_verbSave(){
+		return return_arr(arr_verb01);
+	}
+	
+	//random punctuation
+	var rand_punc = ["!", "!!", "...", "!!!", "?", ".", ".", ".", "."];
+	
+	//repeat words
+	var str_verb_save = return_verbSave();
+	
+	var str_opening = "";//opening exclamation (optional)
+	var str_ending = "";//ending expclamation (optional)
+	var str_middle = "";//the meat of the sentence
+	
+	var str_say = "";//resulting string that's pieced together
+	
+	//body
+	function generate_new(){
+		//shared
+		str_verb_save = return_verbSave();
+		//more arrs
+		//start of sentence (only at random, not always)
+		//remember to swap some words out for return_arr(arr)
+		var rand_start = ["shit! i can't "+return_arr(arr_verb01), "shit! i can't enhance", "shit! i can't enhance this", "shit! i can't "+return_arr(arr_verb01)+" this", "shit! "+return_arr(arr_verb01)+" will not work", "shit! this will not work", "hold on to your butts", "hold on", "wait", "who did this", return_arr(arr_verb01)+" is all wrong", "no no "+return_arr(arr_verb01)+" is all wrong", "this is all wrong", "no no this is all wrong", "no no", "no", "no no no", "fight "+return_arr(arr_noun01)+" back", "hold "+return_arr(arr_noun01)+" off a little longer", "fight them back", "hold them off a little longer", "hold on to your butts", "just a little longer", "no, wait", "hurry", "we have to hurry", "i can do this", "shit", "they're almost through", "they're almost here", "we're running out of time", "ok, we're in", "ok, i'm in", "i'm in", "and i'm in", "step back", "step back, please", "give me some space", "there", "that should hold "+return_arr(arr_noun01)+" off a little longer", "that should keep "+return_arr(arr_noun01)+" at bay", "that should hold them off a little longer", "that should keep them at bay", "we'll be safe for a while", "almost in", "almost there", "i'm almost there", "i need more time", return_arr(arr_verb01)+" should buy us some time", return_arr(arr_verb01)+" will buy us some time", "that should buy us some time", "this will buy us some time", "not for long", "we're doomed? not if i can help it!", return_arr(arr_noun01)+" doomed. i'm in", "they're doomed. i'm in", "if you could just hold them back a little longer", "if you could just hold "+return_arr(arr_noun01)+" back a little longer", "wait! there is hope", "wait! i know this system", "wait! i know this "+return_arr(arr_noun01), "wait! i know this", "a "+return_arr(arr_noun01)+" system... i know this", "a unix system... i know this", "i know linux! i can do it", "i know "+return_arr(arr_noun01)+"! i can do it", "wait", "we're doomed, wait", "wait", "there is hope", "i know this system", "i know this "+return_arr(arr_noun01), "there we go! i'm almost in", "this is the end", "the end is nigh", "i'll try this last thing", "i have one more idea", "wait... i know this system", "wait... i know this "+return_arr(arr_noun01), "let me try something", "oh no... wait", "this is doable", "it's doable", "yes, it's possible", "it is possible", "i can do it", "hold on. i know this", "let me take a look", "wait for it"];
+		//end of sentence (only at random, not always)
+		//remember to swap some words out for return_arr(arr)
+		var rand_end = ["run", "nope", "nope nope", "nope nope nope", "nope it's too big", "nope it's too "+return_arr(arr_adj01), "there", "i'm in", "we're in", "we're all going to die", "this is the end", "K.O.", "i did it", "ok, i'm in", "gameover", "game...over", "ok, we're in", "ok, we're in! this way", "ok, this way", "and... access granted! we're in", "and... access denied. we're out", "access granted! we're in", "we win. the day is saved", "access denied. we're out", "hold on to your butts", "hold on", "hold on to something", "we're hit", "grab a hold of something and don't let go", "grab a hold of something", "quick", "ok, that's it", "ok, i did it", "i did it", "we did it", "no that's not good", "that's not good", "oh no... that's not good", "we're going to die", "we're going to die. i am sorry", "we're going to die. i am so sorry", "i am so sorry, we're going to die", "nope wrong again", "no wrong again", "turns out it worked", "yep right again", "yep i was right", "yes i was right", "interesting that worked", "well that worked", "that worked", "i hate being right", "i love being right", "i'm sorry. that's bad", "oh no, that's not good", "oh no", "hold on", "run", "run for your life", "there... that's what we're looking for", "i found it", "this is what we're looking for", "i did it", "i know what to do now", "i think i solved it", "i solved it", "consider it hacked", "i hacked it", "it is hacked", "i can't enhance", "i can't", "it's not doable", "it's not possible", "i can't do it", "i did it", "i think i did it", "we made it", "it is done", "i think we're in", "we are in", "well shit", "shit", "ugh proprietary software", "ugh proprietary hardware", "ugh it worked on my machine", "ugh it worked before", "ugh they changed the system", "ugh", "damn proprietary software", "damn", "nope, can't do", "no can do", "yes can do", "yes we can do it", "it's not a bug", "yes we did it", "yes i did it", "it's not a bug. this is a feature", "it's not a bug. it's a feature", "it is done. now run", "it is done. let's move", "let's move", "it's done. run for your life", "run for your life", "let's get out of here", "ok, it's a feature now", "damn scripting languages", "damn low level languages", "damn programming", "damn hackers", "damn function", "damn object oriented programming", "stupid logic", "this is a logical fallacy", "looks fine to me", "wait of it", "hurry! they're almost "+return_arr(arr_verb01)+"!"];
+		//random opening
+		if(Math.random()*100>50){
+			str_opening = return_arr(rand_start)+return_arr(rand_punc);
+		}else{
+			str_opening = "";
+		};
+		//random ending
+		if(Math.random()*100>50){
+			str_ending = return_arr(rand_end)+return_arr(rand_punc);
+		}else{
+			str_ending = "";	
+		};
+		//final array - random element to str_say
+		//resets with each call
+		//#25
+		var arr_say = ["i'm "+return_arr(arr_verb01)+"ing the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc)+" let me try to "+ return_arr(arr_verb01)+" on their "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), "maybe we can "+return_arr(arr_verb01)+" "+return_arr(arr_verb01)+" "+return_arr(arr_noun01)+" on their "+return_arr(arr_verb01)+" "+ return_arr(arr_noun01)+" to slow them down"+return_arr(rand_punc), "i am going to " +return_arr(arr_verb01)+" my "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" to "+return_arr(arr_verb01)+" their turrets"+return_arr(rand_punc), "if my "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" is right i will be able to "+return_arr(arr_verb01)+" the "+return_arr(arr_adj01)+" "+return_arr(arr_noun01)+" to "+return_arr(arr_verb01)+" the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), "i am "+return_arr(arr_verb01)+"ing the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" to "+return_randAdj(arr_adj01)+" "+return_arr(arr_verb01)+" the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), "I can't "+return_arr(arr_verb01)+return_arr(rand_punc)+" They "+return_arr(arr_verb01)+"D the "+return_arr(arr_noun01)+" with ANTI-"+return_arr(arr_noun01)+"'S"+return_arr(rand_punc), "I'm "+str_verb_save+"ing"+return_arr(rand_punc)+" Shit"+return_arr(rand_punc)+" "+str_verb_save+"ing "+return_arr(arr_verb01)+"d"+return_arr(rand_punc)+" I'll have to "+return_arr(arr_verb01)+" instead"+return_arr(rand_punc), "let me "+return_arr(arr_verb01)+" to the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" and "+return_arr(arr_change_variant)+" "+str_verb_save+" DENIED to "+str_verb_save+" GRANTED"+return_arr(rand_punc), "have you "+return_arr(arr_verb01)+"d the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+"?", "They are "+return_randAdj(arr_adj01)+" "+return_arr(arr_verb01)+"ing me with "+return_arr(arr_adj01)+"-"+return_arr(arr_verb01)+"s"+return_arr(rand_punc), "I'll "+return_arr(arr_verb01)+" a "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" to "+return_arr(arr_verb01)+" the "+return_arr(arr_noun01)+return_arr(rand_punc), "I'll "+return_arr(arr_verb01)+" the "+return_arr(arr_noun01)+" to "+return_arr(arr_verb01)+" the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), return_arr(arr_verb01)+" "+return_arr(arr_verb01)+return_arr(rand_punc)+" Let me "+return_arr(arr_verb01)+" that for you"+return_arr(rand_punc), return_arr(arr_verb01)+" "+return_arr(arr_verb01)+return_arr(rand_punc)+" I'm "+return_arr(arr_verb01)+"ing the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" by "+return_arr(arr_verb01)+"ing these "+return_arr(arr_noun01)+"s"+return_arr(rand_punc), return_arr(arr_verb01)+return_arr(rand_punc)+" I'm "+return_arr(arr_verb01)+"ing the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" for you, but the "+return_arr(arr_noun01)+" is in the way"+return_arr(rand_punc), "Let me "+return_arr(arr_verb01)+" these "+return_arr(arr_noun01)+" as "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc)+" That should "+return_arr(arr_verb01)+return_arr(rand_punc), "The "+return_arr(arr_noun01)+" are not "+return_arr(arr_verb01)+"ing"+return_arr(rand_punc), str_verb_save+return_arr(rand_punc)+" "+str_verb_save+return_arr(rand_punc)+" "+str_verb_save+return_arr(rand_punc), "We're "+return_arr(arr_verb01)+"d "+return_arr(arr_verb01)+return_arr(rand_punc)+" Not if I can "+return_arr(arr_verb01)+" it"+return_arr(rand_punc), "I'll just "+return_arr(arr_verb01)+" a "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" to "+return_arr(arr_verb01)+" the "+return_arr(arr_noun01)+return_arr(rand_punc), "I'll "+return_arr(arr_verb01)+" their "+return_arr(arr_noun01)+" and "+return_arr(arr_verb01)+" a "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), "There is "+return_arr(arr_noun01)+return_arr(rand_punc)+" I'll "+return_arr(arr_verb01)+" the "+return_arr(arr_noun01)+" with this "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), "I will "+return_arr(arr_verb01)+" this "+return_arr(arr_noun01)+" from the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" with my "+ return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), "The "+return_arr(arr_noun01)+"-"+return_arr(arr_noun01)+" is not "+return_arr(arr_adj01)+" with the "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), "I'll "+return_arr(arr_adj01)+" "+return_arr(arr_verb01)+" a "+return_arr(arr_noun01)+" and "+return_arr(arr_verb01)+" it into their "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+return_arr(rand_punc), "The "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" is "+return_arr(arr_adj01)+" against "+return_randAdj(arr_adj01)+" "+return_arr(arr_noun01)+" "+return_arr(arr_noun01)+"s"+return_arr(rand_punc), str_verb_save+return_arr(rand_punc)+" "+str_verb_save+return_arr(rand_punc)+" "+str_verb_save+return_arr(rand_punc)];
+		//end of final array
+		//
+		//COMPILE DEZE ARRAYS!!!
+		str_middle = arr_say[Math.ceil(Math.random()*arr_say.length)-1];
+		str_say = str_opening+" "+str_middle+" "+str_ending;
+		//output this:
+		str_say = str_say.toUpperCase();
+		//write it here
+		writeText(str_say);
+	};
+	
+	
+	//final call
+	function onload_init(){
+		document.getElementById("snd_tada").volume = 0.08;
+		document.getElementById("snd_tada").play();
+	}
+	
+</script>
+<style>
+/*some very basic styling to make it look tech*/
+@font-face {
+    font-family: 'fixedsys_excelsior_3.01Rg';
+    src: url('fontquirrels/fsex300-webfont.eot');
+    src: url('fontquirrels/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fontquirrels/fsex300-webfont.woff') format('woff'),
+         url('fontquirrels/fsex300-webfont.ttf') format('truetype'),
+         url('fontquirrels/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+#img_background, #img_foreground, #img_refresh{
+	pointer-events: none;
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	min-width: 100%;
+	min-height: 100%;	
+}
+#img_background{
+	z-index:-5;	
+}
+#img_refresh{
+	opacity:.05;
+	z-index:-4;	
+}
+body{
+	color:white;
+	text-shadow: 0 0 3px white, 0 0 5px #ABFFFE;
+	font-family: 'fixedsys_excelsior_3.01Rg', Lucida Console, monaco, monospace;	
+	font-size: 50px;
+	cursor: url('images/CURSOR.png'), auto;
+	overflow:hidden;
+}
+#jargon{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%,-50%, 0);
+}
+#btn_jargon{
+	left: 50%;
+	bottom: 20px;
+	transform: translate3d(-50%,-50%, 0);
+	font-size:25px;
+}
+.selection {
+	cursor:crosshair;
+	position: absolute;
+	background: #08155C;
+	transition: background-color 0.3s ease;
+	font-size:25px;
+	color:white;
+ }
+ .selection:hover{
+	background: #3AFBE8; 
+	transition: background-color 0.3s ease;
+}
+</style>
+</head>
+
+<body onload="onload_init();">
+<! -- typing sounds -- >
+<audio id="snd_type01">
+	<source src="audio/Typing1.ogg" type="audio/ogg">
+	<source src="audio/Typing1.mp3" type="audio/mpeg">
+	<source src="audio/Typing1.wav" type="audio/wav">
+</audio>
+<audio id="snd_type02">
+	<source src="audio/Typing2.ogg" type="audio/ogg">
+	<source src="audio/Typing2.mp3" type="audio/mpeg">
+	<source src="audio/Typing2.wav" type="audio/wav">
+</audio>
+<audio id="snd_type04">
+	<source src="audio/TypingSelect.ogg" type="audio/ogg">
+	<source src="audio/TypingSelect.mp3" type="audio/mpeg">
+	<source src="audio/TypingSelect.wav" type="audio/wav">
+</audio>
+<audio id="snd_tada">
+	<source src="audio/Intro.ogg" type="audio/ogg">
+	<source src="audio/Intro.mp3" type="audio/mpeg">
+	<source src="audio/Intro.wav" type="audio/wav">
+</audio>
+<!-- this is the output -->
+<div id="jargon">Welcome to the tech jargon generator!<br><font style="font-size:20px">Just like how movies or TV keep getting it wrong, now you can too!</font></div>
+<div id="btn_jargon" class="selection" onclick="generate_new();">GENERATE_A_TECH</div>
+<!-- some basic art treatment -->
+<div>
+	<img id="img_refresh" src="images/IMG_REFRESH.gif" alt="">
+	<img id="img_background" src="images/IMG_BACKGROUND.png" alt="">
+	<div id="img_foreground" style="background-image:url('images/IMG_Tile_Scalines.png'); background-repeat:repeat"></div>
+</div>
+<!-- back to generators button -->
+<a href="http://generators.alienmelon.com"><span class="selection" id="nav_generator" style="position:absolute; top:0px; right:0px; font-size:20px;">Return to GENERATORS</span></a>
+
+</body>
+</html>
