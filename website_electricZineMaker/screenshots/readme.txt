@@ -1,0 +1,1 @@
+screenshots folder should be uploaded next to index.html in the live environment

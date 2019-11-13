@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="chrome=1,IE=edge" />
+	<title>Electric Zine Maker</title>
+	<style>
+		html {
+			height:100%;
+		}
+		body {
+			background-color:#FFF;
+			margin:0;
+			height:100%;
+		}
+	</style>
+	<!-- copy these lines to your document head: -->
+
+	<meta name="viewport" content="user-scalable=yes, width=640" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+	<style>
+	@font-face {
+        font-family: 'fixedsys_excelsior_3';
+        src: url('index.hyperesources/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+             url('index.hyperesources/fsex300-webfont.woff') format('woff'),
+             url('index.hyperesources/fsex300-webfont.ttf') format('truetype'),
+             url('index.hyperesources/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+    }
+</style>
+	<style>
+@font-face {
+    font-family: 'anime_aceregular';
+    src: url('index.hyperesources/animeace-webfont.eot');
+    src: url('index.hyperesources/animeace-webfont.eot?#iefix') format('embedded-opentype'),
+         url('index.hyperesources/animeace-webfont.woff2') format('woff2'),
+         url('index.hyperesources/animeace-webfont.woff') format('woff'),
+         url('index.hyperesources/animeace-webfont.ttf') format('truetype'),
+         url('index.hyperesources/animeace-webfont.svg#anime_aceregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+</style>
+	<style>
+    @font-face {
+    font-family: 'aprilfoolalregular';
+    src: url('index.hyperesources/aprifa__-webfont.eot');
+    src: url('index.hyperesources/aprifa__-webfont.eot?#iefix') format('embedded-opentype'),
+         url('index.hyperesources/aprifa__-webfont.woff2') format('woff2'),
+         url('index.hyperesources/aprifa__-webfont.woff') format('woff'),
+         url('index.hyperesources/aprifa__-webfont.ttf') format('truetype'),
+         url('index.hyperesources/aprifa__-webfont.svg#aprilfoolalregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+</style>
+	
+		
+	
+<style>
+
+body{
+	background-color: #2BF2FE;
+}
+
+.nav{
+	/*cursor: url("index.hyperesources/CURSOR_01.png"), auto;*/
+	/*-webkit-text-stroke: 1px black;*/
+	color: white;
+	text-shadow:
+		3px 3px 0 #000,
+		-1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.nav:hover{
+	transition: background-color 0.5s ease;
+	background-color: #33CCFF;
+	
+	background-image: url("index.hyperesources/IMG_FISH_HOVER.gif");
+	
+	-webkit-text-stroke: 1px #00;
+	text-shadow:
+		0px 0px 0 #000,
+		-1px -1px 0 #000,  
+		1px -1px 0 #000,
+		-1px 1px 0 #000,
+		1px 1px 0 #000;
+}
+
+.speech {
+
+  display: inline;
+  background: white;
+  box-shadow: 10px 10px 0px black;
+}
+
+.speech_btn{
+	display: inline;
+	background: white;
+	box-shadow: 10px 10px 0px black;
+	cursor:pointer;
+	color:blue;
+	text-decoration:underline;
+}
+
+.speech_btn:hover{
+	animation: an_shake .3s linear infinite;
+}
+
+.event_button{
+	cursor:pointer;
+	color:blue;
+	text-decoration:underline;
+}
+
+.event_button:hover{
+	animation: an_shake .3s linear infinite;
+}
+
+/*set the hype container css div*/
+#index_hype_container { 
+	min-width: 640px;
+	min-height: 960px;
+}
+
+.btn_download:hover{
+	animation: an_shake .3s linear infinite;
+}
+
+.default_button:hover{
+	animation: an_shake .3s linear infinite;
+}
+
+.text_block1{
+  padding: 50px;
+  border: 3px solid;
+  padding: 15px;    
+  /*border-image: url("index.hyperesources/IMG_BACKGROUND_HYPN_04.gif");
+  border-image-slice: 4;
+  border-image-repeat: round;*/
+  background-color: #3A9BFC;/*rgba(0, 0, 0, .7);*/
+  box-shadow: 30px 30px 0px black;
+  
+  /*animation: wave 3s infinite ease-in-out;*/
+}
+
+.wave{
+	animation: wave 3s infinite ease-in-out;
+}
+
+/*buttons*/
+@keyframes an_shake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+/*animation: wave 3s infinite ease-in-out;*/
+/*was height*/
+@keyframes wave{
+  0%{
+    height:100%;
+  }
+  50%{ 
+    height:60%;
+  }
+  100%{ 
+    height:100%;
+  }
+}
+
+</style>	
+	
+
+	<!-- end copy -->
+  </head>
+  <body>
+	<!-- copy these lines to your document: -->
+
+	<div id="index_hype_container" class="HYPE_document" style="margin:auto;position:relative;width:100%;height:100%;overflow:hidden;">
+		<script type="text/javascript" charset="utf-8" src="index.hyperesources/index_hype_generated_script.js?42242"></script>
+	</div>
+
+	<!-- end copy -->
+  </body>
+</html>
