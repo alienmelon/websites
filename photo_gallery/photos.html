@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>A photo gallery...</title>
+	
+	<script type="text/javascript" src="gallery.js"></script>
+	
+	<link href="style.css" rel="stylesheet" type="text/css">
+	
+</head>
+
+<body>
+	
+		
+	<!--main menu!-->
+	<div id="_menu" class="index_menu">
+		<img class="playdate" src="images/site/IMG_TITLE.png" alt="">
+		<img class="popup" src="images/site/IMG_SUBTITLE.png" alt="">
+		
+		<div class="tagline">a short tagline about this page...</div>
+		
+		<div>
+			<div class="menu_items" onClick="loadGallery(arr_gallery1, 'Gallery Title', '_photoSelection');">Gallery 1</div>
+			<div class="menu_items" onClick="loadGallery(arr_gallery2, 'Gallery Title', '_photoSelection');">Gallery 2</div>
+			<div class="menu_items" onClick="loadGallery(arr_gallery3, 'Gallery Title', '_photoSelection');">Gallery 3</div>
+		</div>
+		
+	</div>
+	
+	<!--photomenu is the container, this is generated via javascript !-->
+	<!--<div class="photomenu">
+				<div id="_photoSelection" class="photomenuThumbs">
+		</div>
+		
+	</div>-->
+	
+</body>
+</html>
