@@ -1,0 +1,60 @@
+@charset "UTF-8";
+/* CSS Document */
+
+
+/*UNIVERSAL*/
+
+body{
+	margin:0;
+	background-color: black;
+}
+
+/*THE BACKGROUND SLIDESHOW - DO NOT TOUCH*/
+._backgroundSlideshow{
+	
+	overflow: hidden;
+	/*100% 100% scales with distortion, cover contains without distortion*/
+    /*background-size: 100% 100%;*/
+	background-size: cover;
+	
+	min-width: 100%;
+	min-height: 100%;
+	
+	width: 100vh;
+	height: 100vh;
+	
+	background-attachment: fixed;
+	position: fixed;
+	
+}
+/*animation states*/
+._backgroundSlideshowOut{
+	animation: fadeOut 3s;
+}
+._backgroundSlideshowIn{
+	animation: fadein 3s;
+}
+
+
+/*ANIMATIONS*/
+@keyframes fadein {
+    0% { 
+		opacity: 0;
+		filter: blur(30px);
+	}
+    100%   { 
+		opacity: 1;
+		filter: blur(0px);
+	}
+}
+
+@keyframes fadeout{
+    0% { 
+		opacity: 1;
+		filter: blur(0px);
+	}
+    100%   { 
+		opacity: 0;
+		filter: blur(30px);
+	}
+}
