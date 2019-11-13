@@ -1,0 +1,296 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>The Tetrageddon Presskit</title>
+<script type="text/javascript" src="js/jquery-3.0.0.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/errsnow.js"></script>
+<script>
+var arr_backgrounds = ["IMG_DESKTOP_JOURNEY_CUT_SET01_02.png", "IMG_DESKTOP_JOURNEY_CUT_SET01_03.png", "IMG_DESKTOP_JOURNEY_CUT_SET01_05.png", "IMG_DESKTOP_JOURNEY_CUT_SET01_06.png", "IMG_DESKTOP_JOURNEY_CUT_SET03_03.png", "IMG_DESKTOP_JOURNEY_CUT_SET03_04.png", "IMG_DESKTOP_JOURNEY_CUT_SET03_05.png", "IMG_DESKTOP_JOURNEY_CUT_SET03_06.png", "IMG_DESKTOP_JOURNEY_CUT_SET03_07.png", "IMG_DESKTOP_JOURNEY_CUT_SET03_08.png", "IMG_DESKTOP_JOURNEY_OVERLAY_SET04_03.png", "IMG_DESKTOP_JOURNEY_OVERLAY_SET06_01.png", "IMG_DESKTOP_JOURNEY_OVERLAY_SET08_03.png", "IMG_DESKTOP_JOURNEY_OVERLAY_SET11_01.png", "IMG_DESKTOP_JOURNEY_OVERLAY_SET18_03.png", "IMG_DESKTOP_JOURNEY_SET01_01.png", "IMG_DESKTOP_JOURNEY_SET01_02.png", "IMG_DESKTOP_JOURNEY_SET01_04.png", "IMG_DESKTOP_JOURNEY_SET01_03.png", "IMG_DESKTOP_JOURNEY_SET01_05.png", "IMG_DESKTOP_JOURNEY_SET01_06.png", "IMG_DESKTOP_JOURNEY_SET01_07.png", "IMG_DESKTOP_JOURNEY_SET01_08.png", "IMG_DESKTOP_JOURNEY_SET01_09.png", "IMG_DESKTOP_JOURNEY_SET02_02.png", "IMG_DESKTOP_JOURNEY_SET02_04.png", "IMG_DESKTOP_JOURNEY_SET02_05.png", "IMG_DESKTOP_JOURNEY_SET02_06.png", "IMG_DESKTOP_JOURNEY_SET02_07.png"];
+function return_foreground(){
+	return "images/"+arr_backgrounds[Math.ceil(Math.random()*arr_backgrounds.length)-1];
+};
+//random name (document.write)
+	function return_aname(){
+			var arr_names = ["Cudo Kwamey", "Dr. Slim Eer.", "Engr. Omo West", "Kliss C. Klang", "Kazuaki Hama", "Stefano Zarella", "Sata N. Hellberg", "Rob Mah Cox", "Chad Sexington", "Eddie God", "Gloria Estefan", "Spunk", "Ursula Grumbie", "Joaquim Rafael Branco of Sao Tome", "Knarps Grandy", "Vernice Pelfrey", "Balboa Ek", "Dominique Langford", "Fahad Sipillis", "Biliferous", "Isaac Meridan Balding", "I. M. Balding", "Bhart Kiss", "Ger Klemsz", "Laurence of Nebraska", "Loxus Landy", "Alcazar Kincaid", "Mundle Scott", "Higgins", "Professor Harvard", "Nestor Dumbkopf", "Facialy E. Organ", "Leszek Nickerbocker", "old man fern", "Bartholomew Martinez", "Dimple Wesley", "zug", "Moose Monster", "mr Castro", "Ginger Sargent", "Obadiah Smith", "holly hufin cupcakes", "kawacatoose", "Zedlzoo", "Tameka Lahoma", "Steven A. Norman", "Rodney Price", "Juliana LANDRUM", "southtexasranches.com", "* Xanax bestseller *", "Meshruk", "Seaborg", "Keelber Elf", "Dr. Schmitt", "Hemoglobin Seaborg", "Startmacar", "Flick Miguel", "Redoslev", "Bloodies T. Panaceas", "Count Orlok", "hendrickson ", "Ruba Cachuba", "Bjorn Uldkrap", "Karen Cliche", "Sir. felike hughes Holder", "Purgatory J. Rancid", "Dr. elroy Gallegos", "Divide D. Six", "Cavalier P. Gobblers", "Lamar Arshpit", "Armond Abdugafor", "Hank Armstrong", "hans-peter", "Dani Klein", "otha tucker", "garland bishop", "Celeste P. Love", "Nanny Aiputcur", "Lindsey Beasley", "Jozy Jbprw", "Lamar Kemp", "Cecily Ciuscu", "Gutrde Ninette", "Beatrice Arshpit Mckay", "Beatriz Bruno", "Hattie Mcconnell", "Blair Holcomb", "Fletcher Sheffield", "Septimus Rhni", "Anibal Ward", "Babla Keyward", "Neil Loyd", "Carlo Harrell", "Dorathy Gilreath", "Laci Nelson", "Dewitt Huddleson", "Beau Meeks", "Elena Cercelaru", "Meggy Weuprijh", "Mildred Uixatea", "Don Spaulding", "Carlo Murdock", "Linwood Mckenna", "Joule S. Nibbler", "Sugar L. Indelicately", "Microwaves T. Lovable", "Primacy Q. Trapezoid", "Cusps G. Autograph", "dewayne lipscombe", "investment consultant", "Omnous Self", "Chi French", "Millicent Boudreaux", "Altreche Chick", "Sherman Stout", "Rusty Carriger", "Marjorie Krueger", "Roscoe Conklin", "Hershel Mcmahon", "Tilda Psemic", "Nina Fuumldie", "Lavonne Westbrook ", "Meghan X. Wayne", "Arlie C. Truss", "Patsy Schneider", "Bernadine Hightower", "Vern Galloway", "Johnnie Proctor", "Tameka Mccoy", "Dish Systems", "Kristopher Ripley", "Anitra Kennelly", "Goedendag Xiaobing"];
+			return arr_names[Math.ceil(Math.random()*arr_names.length)-1];
+	};
+	//ui handling
+	function handleUI(){
+		//
+		var arr_ui = [$("#team"), $("#awards"), $("#aboutgame"), $("#aboutme"), $("#factsheet")];
+		var arr_ui_names = ["#close_team", "#close_awards", "#close_factsheet", "#close_me", "#close_game"];
+		//
+		//first run - hide all
+		function hideAll(){
+			for(var i = 0; i<arr_ui.length; ++i){
+				//
+				//arr_ui[i].draggable();
+				//
+				arr_ui[i].hide();	
+			};
+		};
+		//
+		//events
+		for(var i = 0; i<arr_ui_names.length; ++i){
+			$(arr_ui_names[i]).click(function(event) {
+				//hideAll();
+				var id_hide = ($(this).parent().attr("id"));
+				$("#"+id_hide).hide();
+			});
+		};
+		//
+		$("#nav_factsheet" ).click(function() {
+			hideAll();
+			$("#factsheet").show();
+		});
+		$("#nav_about_the_dev").click(function() {
+			hideAll();
+			$("#aboutme").show();
+		});
+		$("#nav_about_the_game").click(function() {
+			hideAll();
+			$("#aboutgame").show();
+		});
+		$("#nav_awards").click(function(){
+			hideAll();
+			$("#awards").show();
+		});
+		$("#nav_the_team").click(function(){
+			hideAll();
+			$("#team").show();
+		});
+		$("#nav_trailer").click(function(){
+			window.open("https://player.vimeo.com/video/117214600", target="_blank");
+		});
+		$("#nav_images").click(function(){
+			window.open("http://nathalielawhead.com/press/", target="_blank");
+		});
+		//soundtrack
+		/*var snd_loop = document.createElement('audio');
+		snd_loop.setAttribute('src', "audio/AUD_BACKGROUND_SPACEMUSIC.mp3");
+		snd_loop.loop = true;*/
+		//snd_loop.play();
+		//
+		hideAll();
+		//show only factsheet on start
+		$("#factsheet").show();
+		document.getElementById("Stage_IMG_BACKGROUND_02").src = return_foreground();
+		document.getElementById("Stage_IMG_FIELD01").src = return_foreground();
+		//snow
+		snowErrors();
+		//
+	};
+</script>
+<style>
+/*font*/
+@font-face {
+    font-family: 'fixedsys_excelsior_3.01Rg';
+    src: url('fontquirrels/fsex300-webfont.eot');
+    src: url('fontquirrels/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fontquirrels/fsex300-webfont.woff') format('woff'),
+         url('fontquirrels/fsex300-webfont.ttf') format('truetype'),
+         url('fontquirrels/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+/*general
+.errsnows{
+	overflow:hidden;
+}*/
+body{
+	font-family: 'fixedsys_excelsior_3.01Rg', Lucida Console, monaco, monospace;	
+	font-size: 20px;
+	cursor: url('images/CURSOR.png'), auto;
+	overflow:hidden;
+}
+a{
+	color:white;
+	cursor: url('images/CURSOR_BTN.png'), auto;
+}
+img{
+  image-rendering: auto;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;
+}
+#Stage_IMG_FIELD01, #Stage_IMG_BACKGROUND_02, #Stage_IMG_BACKGROUND_01 {
+	position: fixed; 
+	top: 0; 
+	left: 0; 
+	min-width: 100%;
+	min-height: 100%;
+}
+#Stage_IMG_BACKGROUND_01{
+	z-index: -4;
+}
+#Stage_IMG_BACKGROUND_02{
+	z-index: -3;
+}
+#Stage_IMG_FIELD01{
+	z-index: -2;
+}
+#Stage_FIRE{
+	position: absolute;
+	bottom:0;
+    left:0;
+	z-index: -1;
+}
+#aud_controls{
+	position: absolute;
+	bottom:0;
+    left:10px;
+}
+/*UI*/
+#close_factsheet, #close_me, #close_game, #close_awards, #close_team{
+	position: absolute;
+	right: 0px;
+	top: 0px;
+	cursor: url(images/CURSOR_BTN.png), auto;
+}
+#factsheet, #aboutme, #aboutgame, #awards, #team{
+	position: absolute;
+	color: white;
+	background: black;
+	padding: 20px;
+	
+	text-shadow: 0 0 3px grey;
+	
+	top: 50%;
+	left: 50%;
+	transform: translate3d(-50%,-50%, 0);
+	
+	/*background-image: url(images/IMG_DIV_TILE01.gif);
+	background-repeat:repeat;*/
+	
+	border: 3px solid;
+    padding: 15px;    
+    border-image: url(images/IMG_0x001.gif);
+    border-image-slice: 4;
+    border-image-repeat: round;
+}
+#nav{
+	position: absolute;
+	text-shadow: 0 0 3px #00FF00;
+	padding: 20px;
+	font-size: 30px;
+}
+.selection {
+    display: inline;
+    background: black;
+    color: #00FF00; 
+	transition: background-color 0.8s ease;
+ }
+ .selection:hover{
+	background: #FF00FF; 
+	cursor: url('images/CURSOR_BTN.png'), auto;
+	transition: background-color 0.8s ease;
+ }
+</style>
+</head>
+<body onload="handleUI();">
+<div id="aud_controls">
+<audio controls loop autoplay id="snd_loop">
+  <source src="audio/AUD_PRESSKIT_SOUND.ogg" type="audio/ogg">
+  <source src="audio/AUD_PRESSKIT_SOUND.mp3" type="audio/mpeg">
+  <source src="audio/AUD_PRESSKIT_SOUND.wav" type="audio/wav">
+</audio>
+<audio autoplay>
+	<source src="audio/AUD_WELCOME.ogg" type="audio/ogg">
+    <source src="audio/AUD_WELCOME.mp3" type="audio/mpeg">
+    <source src="audio/AUD_WELCOME.wav" type="audio/wav">
+</audio>
+</div>
+<div id="nav">
+<span style="color:#B4FFAA; background:black">Welcome to the presskit. Please select:</span>
+<br><br>
+<span class="selection" id="nav_factsheet">Factsheet</span>
+<br><br>
+<span class="selection" id="nav_about_the_dev">About the Dev</span>
+<br><br>
+<span class="selection" id="nav_about_the_game">About the Game</span>
+<br><br>
+<span class="selection" id="nav_awards">Awards</span>
+<br><br>
+<span class="selection" id="nav_the_team">The Team</span>
+<br><br>
+<span class="selection" id="nav_trailer">Trailer</span>
+<br><br>
+<span class="selection" id="nav_images">Images</span>
+</div>
+<div id="team">
+	<div id="close_team"><img src="images/IMG_BUTTON_CLOSE02.png" alt="close"></div>
+    ARMAGAD (also Tetrageddon Games) was created entirely by one person.<br>
+alienmelon has been responsible for the art, animation, programming, sound, etc...
+<br><br>
+Nevertheless, if you need more names, here are a few randomly generated ones:<br><br>
+<script>document.write(return_aname());</script><br>
+<script>document.write(return_aname());</script><br>
+<script>document.write(return_aname());</script><br>
+<script>document.write(return_aname());</script><br>
+<script>document.write(return_aname());</script><br>
+<br>
+Feel free to assign roles to them as you see fit.
+</div>
+<div id="awards">
+	<div id="close_awards"><img src="images/IMG_BUTTON_CLOSE02.png" alt="close"></div>
+    * Independent Games Festival Nuovo Award<br>
+* Official selection for Out Of Index<br>
+* Communication Arts Interactive Annual 19<br>
+* IndieCade Showcase @ E3<br>
+* FILE Media Art, part of FILE 2014 – Electronic Language International Festival<br>
+* South by Southwest Interactive Awards Finalist<br>
+* Print Magazine’s June 2014 "The Innovation Issue"<br>
+* Web Designer Issue 201 : Design Diary<br>
+* Festival Du Nouveau Cinema<br>
+<a href="http://www.nathalielawhead.com/candybox/about" target="_blank">and more...</a>
+</div>
+	<div id="aboutgame">
+    <div id="close_game"><img src="images/IMG_BUTTON_CLOSE02.png" alt="close"></div><br>
+    Tetrageddon Games (and its downloadable desktop counterpart: <a href="http://gamejolt.com/games/armagad-also-tetrageddon-games/147081" target="_blank">ARMAGAD (also Tetrageddon Games)</a>) is probably the weirdest most tortured not-a-game game you will ever experience. <br><br>
+It is the internet condensed into a slew of interactive experiences that serve as something of a love-letter to the web of the past.
+<br><br>
+The experience is thoroughly riddled with hidden extras and tangents. Much like a virtual arcade, it largely consists of a collection of games. Among others, these include: Anatomically Incorrect Dinosaurs, FROGGY (It's Hungry), and Electric Love Potatoes.<br><br>
+Individual games have been shown at events such as <a href="http://www.gamasutra.com/view/news/266394/Stop_by_Mild_Rumpus_at_GDC_2016_and_play_some_charming_indie_games.php" target="_blank">Mild Rumpus at GDC 2016</a> and <a href="http://fantasticfest.com/games/froggy" target="_blank">Fantastic Arcade.</a>
+    </div>
+	<div id="aboutme">
+		<div id="close_me"><img src="images/IMG_BUTTON_CLOSE02.png" alt="close"></div>
+        Tetrageddon Games & <a href="http://gamejolt.com/games/armagad-also-tetrageddon-games/147081" target="_blank">ARMAGAD (also Tetrageddon Games)</a><br>where created by <a href="http://alienmelon.com" target="_blank">alienmelon.</a>
+<br><br>
+alienmelon (also known as Nathalie Lawhead in physical spaces) is a collective construct of everyone's mind. She only exists because everyone thinks that she is real. She began as an NPC (non-player character) in an early browser text-based game sometime in the 90's. The character was convincing enough that people eventually began inviting her to events, conferences, and other gatherings in RL. As is the case with computers, somehow some weird programming shit happened and she was able to start showing up in the physical world. She spends most of her days making games, but wishes to one day return to her virtual home, and continue being an NPC. 
+<br><br>
+Interested parties can read more about Nathalie, and her achievements, <a href="http://www.nathalielawhead.com/candybox/about" target="_blank">here.</a>
+	</div>
+	<div id="factsheet">
+    <div id="close_factsheet"><img src="images/IMG_BUTTON_CLOSE02.png" alt="close"></div>
+    Developer:<br>
+alienmelon (Nathalie Lawhead)<br>
+Based in Irvine, California<br>
+<br>
+Download Link:<br>
+<a href="http://gamejolt.com/games/armagad-also-tetrageddon-games/147081" target="_blank">Available on Gamejolt</a>
+<br><br>
+Website:<br>
+<a href="http://tetrageddon.com" target="_blank">tetrageddon.com</a>
+<br><br>
+Press / Business contact:<br>
+<a href="mailto:nathalie.lawhead@gmail.com">nathalie.lawhead@gmail.com</a>
+<br><br>
+Social:<br>
+<a href="http://twitter.com/alienmelon" target="_blank">@alienmelon</a>
+<br><br>
+<center>"Tetrageddon is what the internet does to people."<br>
+- alienmelon (prior to her untimely demise)</center>
+</div>
+	<div class="errsnows"></div>
+	<div id="background">
+    <div><img id="Stage_FIRE" src="images/IMG_FIRE01.gif" alt=""></div>
+	<div><img id="Stage_IMG_BACKGROUND_02" alt="" style="opacity:0.5"></div>
+	<div><img id="Stage_IMG_BACKGROUND_01" src="images/IMG_BACKGROUND_01.gif" alt=""></div>
+	<div><img id="Stage_IMG_FIELD01" alt="" style="opacity:0.8"></div>
+    </div>
+</body>
+</html>

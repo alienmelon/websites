@@ -1,0 +1,393 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+	
+<title>Unicornycopia is a magical utopia!</title>
+	
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="GRAVITATOES/GRAVITATOES.js"></script>
+<script src="misc.js"></script>
+	
+<script>
+	
+
+	function init_page(){
+		
+		var aud_click = new Audio("audio/AUD_NOTIFY02.wav");
+		
+		var aud_over01 = new Audio("audio/AUD_CLICK03.wav");
+		var aud_over02 = new Audio("audio/AUD_CLICK05.wav");
+		var aud_over03 = new Audio("audio/AUD_CLICK06.wav");
+		
+		var aud_close = new Audio("audio/AUD_TRANSITION.wav");
+		
+		var arr_mmNavs = ['nav01', 'nav02', 'nav03', 'nav04', 'nav05', 'nav06'];
+		var arr_audOvers = [aud_over01, aud_over02, aud_over03];
+		
+		var arr_mm_images = ["IMG_MM_TILE_01.gif", "IMG_MM_TILE_02.gif", "IMG_MM_TILE_03_02.gif", "IMG_MM_TILE_03.gif", "IMG_MM_TILE_04.gif", "IMG_MM_TILE_05.gif", "IMG_MM_TILE_06.gif", "IMG_MM_TILE_07.gif", "IMG_MM_TILE_08.gif"];
+		var arr_fishes = [];//fishes here
+		
+		//var _closebuttons = document.getElementsByClassName("info_close");
+		
+		var int_fish;//interval for moving fishes
+		
+		function makethis(id, image, arr, appendto){
+			_makethis = document.createElement("div");
+			_makethis.id = id;
+			_makethis.style.position = "fixed";
+			_makethis.style.left = String(Math.random()*fp_returnDocWidth()) + 'px';
+			_makethis.style.bottom = String(Math.random()*fp_returnDocHeight()) + 'px';
+			_makethis.innerHTML = "<img src=" + image + ">";
+			//
+			_makethis.style.pointerEvents = "none";
+			//
+			if(appendto == null){
+				document.getElementsByTagName("body")[0].appendChild(_makethis);
+			}else{
+				_makethis.appendChild(appendto);
+			}
+			//
+			arr.push(id);
+		}
+		
+
+		/*partyskeleton = document.createElement("div");
+		partyskeleton.id = "partyskeleton";
+		//style
+		partyskeleton.style.position = 'fixed';
+		partyskeleton.style.right = '0px';
+		partyskeleton.style.bottom = '0px';
+			//states
+		partyskeleton_idle = document.createElement("div");
+		partyskeleton_idle.id = "partyskeleton_idle";
+		partyskeleton_idle.innerHTML = "<img src=images/IMG_SKELERTON_IDLE.gif>";
+			//
+		//
+		document.getElementsByTagName("body")[0].appendChild(partyskeleton);
+		partyskeleton.appendChild(partyskeleton_idle);*/
+		
+		//
+		function hideDiv(div){
+			//console.log(document.getElementById(div));
+			document.getElementById(div).style.visibility = "hidden";
+			document.getElementById(div).style.display = "none";
+			document.getElementById("iartwork").src = "";
+			//document.getElementById(div).style.pointerEvents = "none";
+		}
+		function showDiv(div){
+			document.getElementById(div).style.visibility = "visible";
+			document.getElementById(div).style.display = "block";
+			//document.getElementById(div).style.pointerEvents = "auto";
+		}
+		
+		//for when you open a window
+		function hideAllText(){
+			document.getElementById("info_dev").style.visibility = "hidden";
+			document.getElementById("info_text").style.visibility = "hidden";
+			document.getElementById("info_awards").style.visibility = "hidden";
+		}
+		
+		function move_fish(){
+			for(j = 0; j < arr_fishes.length; ++j){
+				var fishes = document.getElementById(arr_fishes[j]);
+				var fish_x = parseInt(fishes.style.left);
+				fish_x += 1;
+				fishes.style.left = String(fish_x) + "px";
+				//
+				if(fish_x > fp_returnDocWidth()){
+					fishes.style.left = String(Math.random()*fp_returnDocWidth()) + 'px';
+					fishes.style.bottom = String(Math.random()*fp_returnDocHeight()) + 'px';
+				}
+			}
+		};
+		
+		function change_background(){
+			//
+			document.getElementById("mm_menu").style.backgroundImage = "url(images/mm_textures/" + arr_mm_images[String(Math.ceil(Math.random()*arr_mm_images.length)-1)] + ")"; 
+			//
+			arr_audOvers[Math.ceil(Math.random()*arr_audOvers.length)-1].play();
+		}
+		
+		//set navs
+		for(i = 0; i<arr_mmNavs.length; ++i){
+			document.getElementById(arr_mmNavs[i]).style.transform="rotate(" + String(Math.ceil(Math.random()*5)) + "deg)";
+			document.getElementById(arr_mmNavs[i]).style.animation = "rotation "+String(Math.ceil(Math.random()*2)+0.1)+"s ease-out alternate infinite";
+			//
+			document.getElementById(arr_mmNavs[i]).addEventListener('mouseover', function(){
+				change_background();
+			});
+		}
+		
+		//if more than 0 but canceled this and am just hiding/changing text now...
+		/*for (var n = 0; n < _closebuttons.length; n++) {
+			_closebuttons[n].addEventListener('click', function(){
+				document.getElementById("about_everything").style.visibility = "hidden";
+				//hide all texts too
+				hideAllText();
+			});
+		}*/
+		
+		document.getElementById("button_close").addEventListener('click', function(){
+			document.getElementById("about_everything").style.visibility = "hidden";
+			hideDiv("about_everything");
+			//hide all texts too
+			hideAllText();
+			blowtato();
+			aud_close.play();
+			//
+			showDiv("_bannerad");
+			//document.getElementById("_bannerad").style.visibility = "visible";
+		});
+		document.getElementById("_media_close").addEventListener('click', function(){
+			//document.getElementById("_artwork").style.visibility = "hidden";
+			hideDiv("_artwork");
+			blowtato();
+			aud_close.play();
+			//
+			showDiv("_bannerad");
+			//document.getElementById("_bannerad").style.visibility = "visible";
+		});
+		
+		document.getElementById("_media_back").addEventListener('click', function(){
+			document.getElementById("iartwork").contentWindow.history.back(); 
+		});
+		
+		//set scrolling for fields
+		function set_scroll(div){
+				document.getElementById("info_scrolldown").addEventListener('mousedown', function(){
+					document.getElementById("info_scrolldown").src = "images/IMG_SCROLL_DOWN_MOUSEDOWN.png";
+					document.getElementById(div).scrollTop += 70;
+				});
+				document.getElementById("info_scrollup").addEventListener('mousedown', function(){
+					document.getElementById("info_scrollup").src = "images/IMG_SCROLL_UP_MOUSEDOWN.png";
+					document.getElementById(div).scrollTop -= 70;
+				});
+				document.getElementById("info_scrolldown").addEventListener('mouseup', function(){
+					document.getElementById("info_scrolldown").src = "images/IMG_SCROLL_DOWN_MOUSEOUT.png";
+				});
+				document.getElementById("info_scrollup").addEventListener('mouseup', function(){
+					document.getElementById("info_scrollup").src = "images/IMG_SCROLL_UP_MOUSEOUT.png";
+				});
+		}
+		
+		//clicks
+		document.onmousedown = function(event) { 
+			aud_click.play();
+		};
+		
+		//download buttons
+		document.getElementById("download").addEventListener('mouseover', function(){
+			arr_audOvers[Math.ceil(Math.random()*arr_audOvers.length)-1].play();
+		});
+		
+		//nav (about window)
+		function _setNav(nav, text){
+			document.getElementById(nav).addEventListener('click', function(){
+				//
+				hideDiv("_artwork");
+				showDiv("about_everything");
+				//document.getElementById("_artwork").style.visibility = "hidden";
+				//
+				//document.getElementById("about_everything").style.visibility = "visible";
+				hideAllText();
+				document.getElementById(text).style.visibility = "visible";
+				document.getElementById(text).scrollTop = -500;
+			});
+		}
+		
+		//scroll
+		set_scroll("info_text");
+		set_scroll("info_dev");
+		set_scroll("info_awards");
+		
+		//about
+		_setNav("nav01", "info_text");
+		_setNav("nav02", "info_dev");
+		_setNav("nav03", "info_awards");
+		
+		//art and video
+		document.getElementById("nav04").addEventListener('click', function(){
+			//document.getElementById("about_everything").style.visibility = "hidden";
+			//document.getElementById("_artwork").style.visibility = "visible";
+			hideDiv("about_everything");
+			showDiv("_artwork");
+			hideAllText();
+			//
+			document.getElementById("iartwork").src = "http://unicornycopia.com/media/artwork";
+		});
+		document.getElementById("nav05").addEventListener('click', function(){
+			//document.getElementById("about_everything").style.visibility = "hidden";
+			hideDiv("about_everything");
+			showDiv("_artwork");
+			//document.getElementById("_artwork").style.visibility = "visible";
+			hideAllText();
+			//
+			document.getElementById("iartwork").src = "http://unicornycopia.com/media/video";
+		});
+		
+		
+		
+		//hide
+		//document.getElementById("about_everything").style.visibility = "hidden";
+		//document.getElementById("_artwork").style.visibility = "hidden";
+		//document.getElementById("_bannerad").style.visibility = "hidden";
+		//
+		hideDiv("about_everything");
+		hideDiv("_artwork");
+		hideDiv("_bannerad");
+		//
+		hideAllText();
+		
+		//fish
+		makethis("fish01", "images/IMG_FISH_01.gif", arr_fishes, null);
+		makethis("fish02", "images/IMG_FISH_02.gif", arr_fishes, null);
+		makethis("fish03", "images/IMG_FISH_03.gif", arr_fishes, null);
+		makethis("fish04", "images/IMG_FISH_04.gif", arr_fishes, null);
+		makethis("fish05", "images/IMG_FISH_05.gif", arr_fishes, null);
+		//
+		int_fish = setInterval(move_fish, 30);
+		//blowtato();
+		
+	}
+	
+	
+</script>
+	
+</head>
+
+<body onload="init_page()">
+	
+	<div class = "tile"></div>
+	<div class = "background"><img src="images/IMG_SEQ20_FIRE_02.gif" alt=""></div>
+	
+	<div class="bannerad" id="_bannerad"><a href="http://potatoware.alienmelon.com" target="_blank"><img src="images/IMG_BANNER02.gif" alt="CLICK HERE FOR POTATOES!"></a></div>
+	
+	<div class="menu" id="mm_menu">
+		<div><img src="images/IMG_MAINMENU_TITLE.gif" alt=""></div>
+		<div class = "mm_selection" id="nav01">About "Everything is going to be OK"</div>
+		<br>
+		<div class = "mm_selection" id="nav02">About the Dev</div>
+		<br>
+		<div class = "mm_selection" id="nav03">Awards & Press</div>
+		<br>
+		<div class = "mm_selection" id="nav04">Artwork</div>
+		<br>
+		<div class = "mm_selection" id="nav05">Videos</div>
+		<br>
+		<div class = "mm_selection" id="nav06"><a href="http://unicornycopia.com/"><img src="images/IMG_HAND_HOME.gif" alt="home"></a></div>
+		<br>
+		<br>
+		<div id="aud_controls">
+		<audio controls loop preload="none" width="300" id="snd_loop">
+		  <source src="audio/AUD_SOUNDTRACK01.mp3" type="audio/mpeg">
+		  <source src="audio/AUD_SOUNDTRACK01.wav" type="audio/wav">
+		</audio>
+		</div>
+	</div>
+	
+	<div class="download_icons" id="download">
+		<a href = "https://alienmelon.itch.io/everything-is-going-to-be-ok" target="_blank">
+			<img src="images/IMG_DOWNLOAD_MAC.gif" alt="">
+			<img src="images/IMG_DOWNLOAD_PC.gif" alt="">
+		</a>
+	</div>
+	
+	<div class="artwork" id="_artwork">
+		<div class="media_close" id="_media_close"><img src="images/IMG_BUTTON_CLOSE.png" alt=""></div>
+		<div class="media_back" id="_media_back"><img src="images/IMG_BUTTON_BACK.png" alt=""></div>
+		<iframe id="iartwork"></iframe>
+		
+	</div>
+	
+	<div class="visitme" id="_visitme">
+		<a href="http://alienmelon.com" target="_blank"><img src="images/IMG_VISITME.gif"></a>
+	</div>
+	
+	<div class="info" id="about_everything">
+		<!-- <div id="info_window"><img src="images/IMG_SKELETON_WINDOW_01.gif" alt=""></div> !-->
+		<div id="info_text">
+			<h1>About "Everything is going to be OK"</h1>
+			<br><br>
+			Everything Is Going To Be OK is a collection of life experiences. It is an interactive zine exploring alternative views of power from a survivor's standpoint, and is a commentary on struggle. The focus is largely on bringing humor into "dark times". It offers different perspectives on what it means to live with things like PTSD.
+			The underlying theme is that you are normal for your imperfections, and the way you cope. You are the hero in the story of your life, and you have every right to be proud.
+			My goal is to strip the shame out of talking about things like this.
+			<br><br>
+			Click here for the full <a href="http://unicornycopia.com/ARTIST_STATEMENT.html" target="_blank">Artist's Statement</a>
+			<br><br>
+			<h1>Factsheet</h1>
+			<br><br>
+			Developer:<br>
+			alienmelon (Nathalie Lawhead)
+			Based in Irvine, California
+			<br><br>
+			Download Link:<br>
+			Available on <a href="https://gamejolt.com/games/ok/263066" target="_blank">Gamejolt</a> & <a href="https://alienmelon.itch.io/everything-is-going-to-be-ok" target="_blank">itch.io</a>
+			<br><br>
+			Platforms:<br>
+			Desktop, PC & MAC
+			<br><br>
+			Website:<br>
+			unicornycopia.com
+			<br><br>
+			Press / Business contact:<br>
+			nathalie.lawhead@gmail.com
+			<br><br>
+			Twitter:<br>
+			<a href="http://twitter.com/alienmelon/" target="_blank">@alienmelon</a>
+			<br><br>
+			“It’s the strength of personal work such as Everything Is Going To Be OK that reminds us how interactivity is an essential tool to discuss optimism, expectation, frustration, and struggle. This “digital moment” is as profoundly political as it is subversive in its relationship with the player” - Pietro Righi Riva, <a href="https://amazestuff.tumblr.com/post/160688874664/congratulation-to-the-winners-of-the-6th-a-maze" target="_blank">A MAZE Festival.</a>
+		<br><br><br><br>
+		</div>
+		<div id="info_dev">
+			<h1>ABOUT THE DEV</h1>
+			<br><br>
+			<a href="https://mixtvision.de/" target="_blank">Special thanks to Mixtvision for all their help.</a>
+			<br><br>
+			"Everything is going to be OK" is a solo-developer project by alienmelon.
+			alienmelon began as a net-artist in the late 90's (early 00's).
+			They continue to create experimental art today.
+			<br><br>
+			They are most known for their work on <a href="http://tetrageddon.com" target="_blank">Tetrageddon Games (ARMAGAD)</a>.<br>
+			Other works include <a href="http://bluesuburbia.com" target="_blank">BlueSuburbia</a> (first launched in 1999), <a href="https://alienmelon.itch.io/frog-pets" target="_blank">FrogPets</a>, <a href="http://incorrect.alienmelon.com/" target="_blank">Anatomically Incorrect Dinosaurs</a>, and <a href="http://potatoware.alienmelon.com/" target="_blank">the Electric Love Potato</a>.<br>
+			More of their work can be found on their <a href="http://alienmelon.itch.io/" target="_blank">itch.io page</a>, <a href="http://alienmelon.com" target="_blank">their website</a>, or <a href="http://nathalielawhead.com" target="_blank">blog</a>.<br>
+			You can follow their work on Twitter: <a href="http://twitter.com/alienmelon/" target="_blank">@alienmelon</a>.
+			<br><br>
+			Press / Business contact:<br>
+			nathalie.lawhead@gmail.com
+			<br><br><br><br>
+		</div>
+		<div id="info_awards">
+			<h1>PRESS</h1>
+			<br><br>
+			<a href="http://mashable.com/2017/10/20/nathalie-lawhead-weird-game-everything-okay.amp" target="_blank">Beautifully bizarre art game 'Everything is going to be OK' is about how not OK everything is</a> (Mashable)
+			<br>
+			"It's hard to describe what Everything is going to be OK even is, exactly. It's the kind of thing you need to play to believe." - JESS JOHO
+			<br><br>
+			<a href="http://indiegames.com/2017/06/everything_is_going_to_be_ok_t.html" target="_blank">Everything Is Going To Be OK - The Healing Power Of The Absurd & Optimistic</a> (IndieGames.com by Joel Couture)
+			<br>
+			"Humor is a way of disempowering terrible things (or people). If you can see the ridiculousness in the abuser, abuse, or bad situation, then right away this loses the power it had over you. It can't control you if you just can't take it seriously."
+			<br><br>
+			<a href="https://ladygeekgirl.wordpress.com/2017/07/11/everything-is-going-to-be-ok-is-okay-with-things-being-not-ok-and-im-okay-with-that/" target="_blank">Everything is going to be OK Is Okay With Things Being Not OK, And That’s Okay</a> (Lady Geek Girl and friends by Tsunderin)
+			<br>
+			"Humor is by all means an effective way of dealing with depression and other issues, but to me, the kind way in which the game lifts up the efforts of its creatures is the most impactful aspect of the game as a whole."
+			<br><br>
+			<a href="http://www.takethis.org/2017/06/everything-is-going-to-be-ok-explores-hope-in-gruesome-circumstances/" target="_blank">‘Everything Is Going to Be Ok’ Explores Hope in Gruesome Circumstances</a> (Take This By Nissa Campbell)
+			<br>
+			"Even as the game takes on a dark view of platitudes and the ways society fails people who need even the smallest amount of support, it embraces the power of hope and healing."
+			<br><br>
+			<h1>AWARDS</h1>
+			<br><br>
+			<a href="https://venturebeat.com/2017/10/09/everything-is-going-to-be-ok-wins-indiecades-2017-interaction-award/" target="_blank">IndieCade, The Interaction Award</a>
+			"Imaginary user interfaces have been an important expressive tool for indie games this past year, and this is a particularly endearing example. An interactive zine presented in the form of a janky old desktop. 'everything is going to be OK' is oxymoronic through and through, its adorable characters seeming to live in a state of constant instability. It is jumbled, scattered, and chaotic - yet it also feels like a cohesive whole."
+			<br><br>
+			<a href="https://amazestuff.tumblr.com/post/160688874664/congratulation-to-the-winners-of-the-6th-a-maze" target="_blank">A MAZE Festival Winner (Digital Moment)</a>
+			“It’s the strength of personal work such as Everything Is Going To Be OK that reminds us how interactivity is an essential tool to discuss optimism, expectation, frustration, and struggle. This “digital moment” is as profoundly political as it is subversive in its relationship with the player” - Pietro Righi Riva, A MAZE Festival.
+			<br><br><br><br>
+		</div>
+		<div class="info_close" id="button_close"><img src="images/IMG_BUTTON_CLOSE.png" alt=""></div>
+		<div class="info_scroll"><img id="info_scrolldown" src="images/IMG_SCROLL_DOWN_MOUSEOUT.png" alt=""><img id="info_scrollup" src="images/IMG_SCROLL_UP_MOUSEOUT.png" alt=""></div>
+	</div>
+	
+</body>
+</html>

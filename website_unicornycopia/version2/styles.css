@@ -1,0 +1,292 @@
+@charset "UTF-8";
+/* CSS Document */
+
+/* fave */
+@font-face {
+	font-family: 'fixedsys_excelsior_3.01Rg';
+	src: url('fontquirrels/fsex300-webfont.eot');
+	src: url('fontquirrels/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fontquirrels/fsex300-webfont.woff') format('woff'),
+		 url('fontquirrels/fsex300-webfont.ttf') format('truetype'),
+		 url('fontquirrels/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+/* todo? */
+/*@media all and (orientation:portrait) {
+    #DIV_NAME {
+         //show something here
+    }
+}*/
+
+body {
+	background-color:black;
+	cursor: url('images/IMG_SKELETON_CLICK.gif'), auto;
+	font-family: 'fixedsys_excelsior_3.01Rg', monaco, monospace;
+	color: white;
+	font-size: 30px;
+}
+
+h1{
+	display:inline-block;
+	background-color:black;
+	color:white;
+	font-size: 40px;
+	animation: rotation 2s ease-out alternate infinite;
+}
+
+a:link{
+	color: #FF00AE;
+	text-decoration: overline;
+	cursor: url('images/IMG_SKELETON.gif'), auto;
+	/*transform*/
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+a:hover{
+	color: #000000;
+}
+
+a:visited{
+	color: #FED3FF;
+}
+
+._button{
+	cursor: url('images/IMG_SKELETON.gif'), auto;
+}
+
+._button:hover{
+  transition: background-color 0.5s ease;
+  background-color: #FF00FF;
+}
+
+/*pixel*/
+img{
+	image-rendering: auto;
+	image-rendering: crisp-edges;
+	image-rendering: pixelated;
+	image-rendering: -moz-crisp-edges;
+	image-rendering: -o-crisp-edges;
+	-ms-interpolation-mode: nearest-neighbor;
+}
+
+.background img{
+	position: absolute; 
+	top: 0; 
+	left: 0; 
+	right: 0; 
+	bottom: 0;
+	margin: auto; 
+	min-width: 100%;
+	min-height: 100%;
+	z-index: 0;
+}
+
+.tile{
+	position: fixed;
+	top: 0px;
+	left: 0px;
+	min-width: 100%;
+	min-height: 100%;
+	background-image: url("images/IMG_BACKGROUND.png");
+	background-repeat: repeat-x;
+	z-index: -1;
+}
+
+.artwork{
+	position: fixed;
+	background: #FF00AE;
+	/*background-image: url("images/mm_textures/IMG_MM_TILE_07.gif");*/
+	padding: 5px;
+	border: 5px solid white;
+	outline: 20px solid #0000AE;
+	box-shadow: 40px 40px 0px black;
+	width: 975px;
+	height: 645px;
+	/*max-width: 960px;
+	max-height: 640px;
+	*/
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	/*hidden at first because this is the window
+	visiblity:hidden;*/
+	-webkit-overflow-scrolling: touch;
+	overflow:hidden;
+	overflow-y:scroll;
+	overflow-x:hidden;
+}
+
+#iartwork{
+	height: 100%;
+	width: 100%;
+}
+
+.info{
+	position: fixed;
+	background-image: url("images/IMG_SKELETON_WINDOW_01.gif");
+	background-repeat:no-repeat;
+	width: 880px;
+	height: 640px;
+	/**/
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	/*hidden at first because this is the window*/
+	visiblity:hidden;
+	-webkit-overflow-scrolling: touch;
+}
+
+.info_scroll{
+	position: absolute;
+	left: 70px;
+	top: 539px;
+	cursor: url('images/IMG_SKELETON_BTN.gif'), auto;
+}
+
+.info_close{
+	position:absolute;
+	left: 643px;
+	top:81px;
+	cursor: url('images/IMG_SKELETON_BTN.gif'), auto;
+}
+
+.media_close{
+	position:absolute;
+	left: 900px;
+	top: 0px;
+	cursor: url('images/IMG_SKELETON_BTN.gif'), auto;
+}
+.media_back{
+	position:absolute;
+	left:820px;
+	top:0px;
+	cursor: url('images/IMG_SKELETON_BTN.gif'), auto;
+}
+
+#info_text, #info_dev, #info_awards{
+	position: absolute;
+	left: 120px;
+	top: 100px;
+	width: 530px;
+	height: 480px;
+	overflow:auto;
+	padding:10px;
+}
+
+
+.download_icons{
+	position:fixed;
+	left: 50%;
+	top: 30%;
+	transform: translate(-50%, 50%);
+	cursor: url('images/IMG_SKELETON.gif'), auto;
+	animation: rotation 2s ease-out alternate infinite;
+}
+
+.menu{
+	position:absolute;
+	height: 100%;
+	width:20%;
+	left:0;
+	top:0;
+	bottom:0;
+	background-color: black;
+	background-image: url("images/mm_textures/IMG_MM_TILE_01.gif");
+	background-repeat:repeat;
+	box-shadow: 30px 30px 0px black;
+}
+
+.mm_selection{
+	margin-left: 40px;
+	margin-top: 5px;
+	padding: 5px;
+	display:inline-block;
+	background-color:black;
+	text-align:center;
+	cursor: url('images/IMG_SKELETON.gif'), auto;
+	/*transform*/
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	/*animate
+	animation: rotation 1s ease-out alternate infinite;*/
+}
+.mm_selection:hover{
+	background-color:white;
+	color:black;
+}
+
+.footer{
+	background-image: url("images/Untitled-5.gif");
+	padding: 2px;
+	border: 5px solid white;
+	box-shadow: 10px 10px 0px black;
+	width: 200px;
+	position:fixed;
+	bottom:15px;
+	/*transform*/
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.footer:hover{
+	color: #FF00AE;
+	background: #000000;
+}
+
+
+.title{
+	position: fixed;
+	background: #FF00AE;
+	background-image: url("images/IMG_BACKGROUND01.gif");
+	padding: 5px;
+	border: 5px solid white;
+	outline: 20px solid #0000AE;
+	box-shadow: 40px 40px 0px black;
+	left: 50%;
+	top: 50%;
+	/*lazy centering*/
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+	/*transform*/
+	-webkit-transition: all 0.5s ease-out;
+	-o-transition: all 0.5s ease-out;
+	transition: all 0.5s ease-out;
+}
+.title:hover {
+	background: #000000;
+}
+
+.bannerad{
+	position:fixed;
+	/*left: 50%;*/
+	right:0px;
+	top:0px;
+	/*transform: translate(-50%, 0%);*/
+	cursor: url('images/IMG_SKELETON_BTN.gif'), auto;
+}
+
+.visitme{
+	position:fixed;
+	right: 0px;
+	bottom: 0px;
+}
+
+.aud_controls{
+	position:absolute;
+	right:0px;
+	bototm:0px;
+}
+
+/*various animations*/
+
+@keyframes rotation {
+  0% {
+	transform: rotate(-5deg);
+  } 100% {
+	transform: rotate(5deg);
+  }
+}

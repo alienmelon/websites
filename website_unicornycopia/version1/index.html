@@ -1,0 +1,430 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no width=960 height=640 initial-scale=0.5 maximum-scale = 0.5"/>
+<title>UNICORNYCOPIA is a magical utopia! It's the best place in the world...</title>
+	<script src="GRAVITATOES/GRAVITATOES.js"></script>
+	<script>
+		function init(){
+			//arrays
+			var arr_images = ["0.gif", "1.gif", "1.png", "5.gif", "BACKGROUND.png", "BEST_IN_THE_SHOW_07_100.png", "BEST_IN_THE_SHOW_100.png", "BUN02.gif", "greatart.png", "GROUNDS_FOR_PAGE06.gif", "IMG_PAGE6_DIALOGUE.png", "IMG_PAGE17_72.png", "IMG_PLEASE.gif", "js.png", "lost.png", "mambo.png", "PAGE06_72.png", "PAGE17_INTERACTION.png", "PAGE20_72.png", "PAGE23_WORD_01.png"];
+			//interval
+			var int_tick;
+			var num_currImg = 0;
+			//audio
+			var aud_down = new Audio("audio/AUD_SEQ13_UI_CLICK_DOWN.wav");
+			var aud_up = new Audio("audio/AUD_SEQ13_UI_CLICK_UP.wav");
+			var aud_loop = new Audio("audio/AUD_SEQ04_MUSIC_01.wav");
+			//hide this
+			function _hidethis(str_elem){
+				document.getElementById(str_elem).style.visibility = "hidden";
+			}
+			function _showthis(str_elem){
+				document.getElementById(str_elem).style.visibility = "visible";
+			}
+			
+			//math
+			function returnDocWidth(){
+				var num_width = window.innerWidth
+				|| document.documentElement.clientWidth
+				|| document.body.clientWidth;
+
+				//num_width = num_width + num_frogWidth;
+
+				return num_width;
+			}
+			function returnDocHeight(){
+				var num_height = window.innerHeight
+				|| document.documentElement.clientHeight
+				|| document.body.clientHeight;
+
+				//num_height = num_height + num_frogHeight;
+
+				return num_height;
+			}
+			function math_randRange(num_min, num_max){
+				return (Math.floor(Math.random() * (num_max - num_min + 1)) + num_min);
+			}
+			function mathPosNeg(num) {
+				if(Math.random()*100 > 70){
+					num = num;
+				}else{
+					num = num*-1;
+				}
+				return num;
+			}
+			
+			//button presses (change image)
+			function btn_press(id, img){
+				document.getElementById(id).src = img;
+			}
+			function btn_release(id, img){
+				document.getElementById(id).src = img;
+			}
+			
+			//set position
+			function setX(id, val){
+				id.style.left = String(val) + 'px';
+			}
+			function setY(id, val){
+				id.style.top = String(val) + 'px';
+			}
+			
+			function getX(id){
+				return parseInt(id.style.left);
+			}
+			function getY(id){
+				return parseInt(id.style.top);
+			}
+			
+			function setIcoXY(id){
+				var clip = document.getElementById(id);
+				//
+				setX(clip, getX(clip) - Math.random()*mathPosNeg(Math.random()*5));
+				setY(clip, getY(clip) - Math.random()*mathPosNeg(Math.random()*5));
+				//off page?
+				if(getX(clip) < 0 || getY(clip) < 0){
+					place_icons();
+				}
+				if(getX(clip) > returnDocWidth()){
+					place_icons();
+				}
+				if(getY(clip) > returnDocHeight() - 400){
+					place_icons();
+				}
+			}
+			
+			function moveico(){
+				setIcoXY("download_mac");
+				setIcoXY("download_pc");
+			}
+			
+			function place_icons(){
+				setX(document.getElementById("download_mac"), Math.random () * returnDocWidth() / 2);
+				setY(document.getElementById("download_mac"), Math.random () * returnDocHeight() / 2);
+			
+				setX(document.getElementById("download_pc"), Math.random () * returnDocWidth() / 2);
+				setY(document.getElementById("download_pc"), Math.random () * returnDocHeight() / 2);
+			}
+			
+			//hide all windows
+			function hideWindows(){
+				_hidethis("about_window");
+				_hidethis("screenshots_window");
+			};
+			
+			//screenshots_window
+			function showScreenshot(){
+				var curr_screenshot = "screenshots/" + arr_images[num_currImg];
+				console.log(curr_screenshot);
+				document.getElementById("img_screenshot").src = curr_screenshot;
+				//next & restart
+				num_currImg += 1;
+				if(num_currImg > arr_images.length - 1){
+					num_currImg = 0;
+				}
+			}
+			
+			//listeners for footer (swap)
+			//about
+			document.getElementById("about").addEventListener("mousedown", function(){
+				btn_press("about", "images/IMG_ICO_ABOUT_DOWN.png");
+			});
+			document.getElementById("about").addEventListener("mouseup", function(){
+				btn_release("about", "images/IMG_ICO_ABOUT_UP.png");
+			});
+			//screenshots
+			document.getElementById("screenshots").addEventListener("mousedown", function(){
+				btn_press("screenshots", "images/IMG_ICO_SCREENSHOTS_DOWN.png");
+			});
+			document.getElementById("screenshots").addEventListener("mouseup", function(){
+				btn_release("screenshots", "images/IMG_ICO_SCREENSHOTS_UP.png");
+			});
+			//trailer
+			document.getElementById("trailer").addEventListener("mousedown", function(){
+				btn_press("trailer", "images/IMG_ICO_TRAILER_DOWN.png");
+			});
+			document.getElementById("trailer").addEventListener("mouseup", function(){
+				btn_release("trailer", "images/IMG_ICO_TRAILER_UP.png");
+			});
+			//????
+			document.getElementById("undefined").addEventListener("mousedown", function(){
+				btn_press("undefined", "images/IMG_ICO_UNDEFINED_DOWN.png");
+			});
+			document.getElementById("undefined").addEventListener("mouseup", function(){
+				btn_release("undefined", "images/IMG_ICO_UNDEFINED_UP.png");
+			});
+			//end listeners for footer
+			//listeners for nav
+			document.getElementById("about").addEventListener("click", function(){
+				//hide before showing
+				hideWindows();
+				//show
+				_showthis("about_window");
+			});
+			//SCREENSHOT EVENTS
+			document.getElementById("screenshots").addEventListener("click", function(){
+				hideWindows();
+				showScreenshot();
+				_showthis("screenshots_window");
+			});
+			document.getElementById("img_screenshot").addEventListener("mouseup", function(){
+				showScreenshot();
+			});
+			//potatoes
+			document.getElementById("undefined").addEventListener("click", function(){
+				blowtato();
+			});
+			//close all
+			document.getElementById("close_about").addEventListener("click", function(){
+				hideWindows();
+			});
+			document.getElementById("close_screenshots").addEventListener("click", function(){
+				hideWindows();
+			});
+			
+			//download links
+			document.getElementById("download_mac").addEventListener("click", function(){
+				window.open("http://gamejolt.com/games/ok/263066");
+			});
+			document.getElementById("download_pc").addEventListener("click", function(){
+				window.open("http://gamejolt.com/games/ok/263066");
+			});
+			
+			//arr_images  num_currImg
+			
+			//clicks
+			document.onmousedown = function() { 
+				aud_down.play();
+			};
+			document.onmouseup = function(){
+				aud_up.play();
+			}
+			//
+			place_icons();
+			int_tick = setInterval(moveico, 5);
+			aud_loop.play();
+			aud_loop.loop = true;
+			//
+		}
+	</script>
+	
+	<style>
+		/*font*/
+		@font-face {
+			font-family: 'fixedsys_excelsior_3.01Rg';
+			src: url('fontquirrels/fsex300-webfont.eot');
+			src: url('fontquirrels/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+				 url('fontquirrels/fsex300-webfont.woff') format('woff'),
+				 url('fontquirrels/fsex300-webfont.ttf') format('truetype'),
+				 url('fontquirrels/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+			font-weight: normal;
+			font-style: normal;
+		}
+		/*body*/
+		body{
+			font-family: 'fixedsys_excelsior_3.01Rg', monaco, monospace;
+			color: white;
+			background-color:black;
+			font-size: 30px;
+			cursor: url('images/CURSOR.png'), auto;
+			overflow-y: hidden;
+		}
+		
+		.footer_bar{
+			position:fixed;
+			bottom: 0;
+			left: 0;
+			margin:auto;
+			min-width:100%;
+			/*min-height:100%;*/
+			
+		}
+		.footer{
+			position: fixed;
+			bottom: 10px;
+			width: 100%;
+		}
+		.footer img{
+			padding: 10px;
+		}
+		/*Images for the scene*/
+		.scene img{
+			position: absolute; 
+			top: 0; 
+			left: 0; 
+			right: 0; 
+			bottom: 0;
+			margin: auto; 
+			min-width: 100%;
+			min-height: 100%;
+		}
+		/*pixel all images*/
+		img{
+			image-rendering: auto;
+			image-rendering: crisp-edges;
+			image-rendering: pixelated;
+			image-rendering: -moz-crisp-edges;
+			image-rendering: -o-crisp-edges;
+			-ms-interpolation-mode: nearest-neighbor;
+		}
+		/*cursor*/
+		.footer_button{
+			cursor: url('images/CURSOR_BTN.png'), auto;
+		}
+		/*another cursor for a should be here*/
+		a:hover{
+			cursor: url('images/CURSOR_BTN.png'), auto;
+			color: white;
+		}
+		a{
+			color: #A9A9A9;
+			text-decoration: none;
+		}
+		
+		/*hide trailer untill one exists (coming soon)*/
+		#trailer{
+			visibility:hidden;
+		}
+		/*mail button*/
+		#mail{
+			position:fixed;
+			bottom: 30px;
+			right: 10px;
+			minimum-width: 960px;
+		}
+		/*link to tetrageddon*/
+		#ico_tetrageddon{
+			position:fixed;
+			top: 10px;
+			right: 10px;
+		}
+		
+		/*the main download buttons*/
+		.download_ico{
+			position:fixed;
+			cursor: url('images/CURSOR_BTN.png'), auto;
+		}
+		
+		/*WINDOWS*/
+		.window{
+			position: absolute;
+    		left: 40%;
+			top: 40px;
+			width:40%;
+		}
+		.window_content{
+			position: relative;
+    		left: -50%;
+			background: #0000AE;
+			padding: 20px;
+			border-style: solid;
+			max-width: 800px;
+		}
+		.close_btn{
+			position:absolute;
+			left: 0px;
+			top:0px;
+			/*!! TODO: FIX THIS CURSOR STUFF !!*/
+			cursor: url('images/CURSOR_BTN.png'), auto;
+		}
+		/*hide windows*/
+		#about_window{
+			position:absolute;
+			max-height: 500px;
+			max-width: 800px;
+			overflow: scroll;
+			overflow-x: hidden;
+			visibility:hidden;
+		}
+		#screenshots_window{
+			position:absolute;
+			visibility:hidden;
+			overflow:hidden;
+		}
+		/*screenshots*/
+		#img_screenshot{
+			max-width: 800px;
+			cursor: url('images/IMG_NEXT.png'), auto;
+		}
+		
+		/*HACK (mobile -- todo!!)*/
+		 ::-webkit-scrollbar {
+			width: 20px !important;
+		 }
+		::-webkit-scrollbar-track {
+		   -webkit-box-shadow: inset 0 0 10px rgba(0,0,0,0.3) !important;
+		   -webkit-border-radius: 10px !important;
+		   border-radius: 10px !important;
+		 }
+		 ::-webkit-scrollbar-thumb {
+		   -webkit-border-radius: 10px !important;
+		   border-radius: 20px !important;
+		   background: #FFFFFF !important; 
+		 }
+		 ::-webkit-scrollbar-thumb:window-inactive {
+		   background: #FFFFFF !important; 
+		 }
+	</style>
+
+</head>
+
+<body onload="init();">
+	
+	<div class="scene">
+		<img src="images/IMG_BACKGROUND_SMALL.gif" alt="">
+		<img src="images/IMG_BACKGROUND_GROUND.gif" alt="">
+		
+	</div>
+	
+	<div id="misc">
+		<img class="footer_bar" src="images/IMG_BACKGROUND_GRASS.gif" alt="">
+		<img class="footer_bar" src="images/IMG_GROUND.png" alt="">
+		<a href="mailto:nathalie.lawhead@gmail.com"><img class="button" id="mail" src="images/IMG_ICO_MAILME.png" alt=""></a>
+	</div>
+	
+	<div class="footer">
+		<div id="group_footer">
+			<center>
+				<img class="footer_button" id="about" src="images/IMG_ICO_ABOUT_UP.png" alt="">
+				<img class="footer_button" id="screenshots" src="images/IMG_ICO_SCREENSHOTS_UP.png" alt="">
+				<img class="footer_button" id="trailer" src="images/IMG_ICO_TRAILER_UP.png" alt="">
+				<img class="footer_button" id="undefined" src="images/IMG_ICO_UNDEFINED_UP.png" alt="">
+			</center>
+		</div>
+	</div>
+	
+	<a href="http://tetrageddon.com"><img id="ico_tetrageddon" src="images/IMG_ICO_TETRAGEDDON.png" alt=""></a>
+	
+	<div class="download_ico" id="download_mac"><img src="images/IMG_ICO_DOWNLOAD_MAC.gif" alt=""></div>
+	<div class="download_ico" id="download_pc"><img src="images/IMG_ICO_DOWNLOAD_PC.gif" alt=""></div>
+	
+	<div class="window">
+		<div class="window_content" id="about_window">
+			<img class="close_btn" id="close_about" src="images/IMG_BUTTON_CLOSE.png" alt="">
+			<br>
+			Welcome to the home of EVERYTHING IS GOING TO BE OK, an interactive ZINE meets <a href="http://definethis.alienmelon.com">GLITCHPUNK PUSSY-STONERGAME</a> (or ACIDGAME, for short) by <a href="http://alienmelon.com">ALIENMELON</a>, that is currently in production.<br><br>
+			This zine is a collection of life experiences, commentary on struggle, and oddly enough my own version of a power-fantasy. I have come to think that we have a backward idea of power, and perception of strength. We always have, and I think this is a byproduct of a historically patriarchal system. From religion, to politics, to economics, power is viewed as how many people you can subjugate. Respect is how many people fear you because of your power. How you can get what you want at the expense of others, how you are the biggest dog in the dog-eat-dog world that we have created for ourselves...<br>
+			Our popular entertainment has always drawn from this point of view. It's simply fact. You use your power to hurt your enemies and eliminate them.<br>
+			We don't really have a concept, in our culture, or discussion about alternative views of power from a survivor's standpoint. How is it like for survivors? Are people that live with trauma strong? Are people with mental disorders, or PTSD strong? Why is suicide seen as selfish and weak, when the person that lived with it got as far as they did? We don't popularly view survivors, victims, traumas, etc, as strength. It is a weakness, and I don't like that. I think this is because we have created a culture where we cannot really ever move past pain. We don't teach people how to heal, to overcome, or be powerful. We teach people to be perpetual survivors. We live with pain, but no way of transcending it. I think a lot of this can be credited to how we view "strength". I don't think the icon, epitome, of strength should be how many people you can hurt, conquer, overcome, but how much of this abuse you can overcome. How long you can live with what happened to you. How strong you are for being here. How powerful you are for being strong because you have no other option but to be strong.<br>
+			Surviving is one thing, but living with it is an entirely different fight, and I think this is where examples of real strength are.<br>
+			If approached from this point of view then it is an obvious conclusion that you should be celebrated simply for being here.<br>
+			You are normal for your imperfections, and the way you cope. You are the hero in the story of your life, and you have every right to be proud.<br>
+			These are a collection of very abstract life experiences, things I felt while going through hard times, and how I felt, or moved on, afterward.<br>
+			A lot of it is presented via humor, or creates ridiculous circumstances, because I feel like life is ridiculous. It's one damn thing after the other and after a while there's nothing left to do but laugh at it. Humor is what helps take the edge off, perhaps even create a platform for transcendence. Either way, it has been cathartic.
+			<br><br>
+			If you are interested in playing an early build, contact <a href="mailto:nathalie.lawhead@gmail.com">nathalie DOT lawhead AT gmail DOTCOM.</a>
+			<br><br>
+			<center>~ THE GAME IS COMING SOON ~</center>
+		</div>
+		<div class="window_content" id="screenshots_window">
+			<img class="close_btn" id="close_screenshots" src="images/IMG_BUTTON_CLOSE.png" alt="">
+			<img id="img_screenshot"><!-- images go here -->
+		</div>
+	</div>
+	
+	<!-- <div id="test" style="position:absolute">THIS IS A TEST.</div> -->
+	
+</body>
+</html>

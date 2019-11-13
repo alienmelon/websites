@@ -1,0 +1,80 @@
+<!doctype html>
+<html>
+<head>
+	
+<meta charset="UTF-8">
+<meta name="description" content="Everything is going to be OK, or at least that's what I keep telling myself.">
+	
+<title>Welcome to UNICORNYCOPIA, a magical utopia! It is the best place in the world...</title>
+	
+<link rel="stylesheet" type="text/css" href="styles.css">
+<!-- <script src="misc.js"></script> !-->
+	
+<script>
+	//page 1 stuff (selection of games - currently there's only one...)
+	//pages... making this old-school like because it's cute
+	
+	var num_xmouse;
+	var num_ymouse;
+
+	var aud_bootup = new Audio("audio/AUD_SEQ_V01_S01.wav");
+	var aud_click = new Audio("audio/AUD_NOTIFY02.wav");
+	
+	function makeSkeleton(){
+		var arr_images = ["IMG_SKULL_TALKING_01.gif", "IMG_SPINE_TALKING_01.gif", "IMG_PELVIS_TALKING_01.gif", "IMG_LONGBONE_TALKING_01.gif", "IMG_FOOT_TALKING_01.gif", "IMG_CHEST_TALKING_01.gif"];
+		//
+		var rand_img = arr_images[Math.ceil(Math.random()*arr_images.length)-1];
+		//
+		skeleton = document.createElement("div");
+		skeleton.id = "skeleton";
+		//style
+		skeleton.style.position = 'absolute';
+		skeleton.style.left = num_xmouse + 'px';
+		skeleton.style.top = num_ymouse + 'px';
+		skeleton.style.pointerEvents = "none";
+		//load
+		skeleton.innerHTML = '<img src=images/' + rand_img + '>';
+		//
+		document.getElementsByTagName("body")[0].appendChild(skeleton);
+	}
+	
+	//clicks
+	document.onmousedown = function(event) { 
+		aud_click.play();
+		//
+		num_xmouse = event.clientX;
+		num_ymouse = event.clientY;
+		//
+		makeSkeleton();
+	};
+	
+	
+	aud_bootup.play();
+	
+</script>
+	
+</head>
+
+<body>
+	
+	<div class = "background"><img src="images/IMG_SEQ20_FIRE_01.gif" alt=""></div>
+	<div class = "background"><img src="images/IMG_27_SKELETONDANCE_01.gif" alt=""></div>
+	
+	<!-- <div class="bannerad" id="_bannerad"><a href="http://potatoware.alienmelon.com" target="_blank"><img src="images/IMG_BANNER02.gif" alt="CLICK HERE FOR POTATOES!"></a></div> !-->
+	
+	<div class="footer">also good...<br><br><a href="http://tetrageddon.com" target="_self">TETRAGEDDON</a><br><a href="http://generators.alienmelon.com/" target="_self">GENERATORS</a><br></div>
+	<!-- will contain multiple titles once I have multiple games here (scrolling and stuff) !-->
+	<div class = "title">
+		<center>
+		<a href="unicornycopia.html" target="_self"><img class="_button" src="images/IMG_TITLE.gif" alt=""></a>
+		<a href="http://unicornycopia.com/graveyard/" target="_self"><img class="_button" src="images/IMG_GRAVEYARD_TITLE.png" alt=""></a>
+		<a href="http://unicornycopia.com/ezm/" target="_self"><img class="_button" src="images/IMG_ZINEMAKER.gif" alt=""></a>
+		</center>
+	</div>
+	
+	<div class="visitme" id="_visitme">
+		<a href="http://alienmelon.com" target="_blank"><img src="images/IMG_VISITME.gif"></a>
+	</div>
+	
+</body>
+</html>
