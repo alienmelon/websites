@@ -1,0 +1,3 @@
+This is the Electric Love Potato website (http://potatoware.alienmelon.com/)
+Plain CSS and javascript...
+The intro animation is create.js

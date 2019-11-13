@@ -1,0 +1,279 @@
+/*simple CSS for ELP 2.0 website*/
+
+/* yay */
+@font-face {
+	font-family: 'fixedsys_excelsior_3.01Rg';
+	src: url('fontquirrels/fsex300-webfont.eot');
+	src: url('fontquirrels/fsex300-webfont.eot?#iefix') format('embedded-opentype'),
+		 url('fontquirrels/fsex300-webfont.woff') format('woff'),
+		 url('fontquirrels/fsex300-webfont.ttf') format('truetype'),
+		 url('fontquirrels/fsex300-webfont.svg#fixedsys_excelsior_3.01Rg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body{
+	background-image: url("images/IMG_TILE_ANIMATED.gif");
+	background-repeat: repeat;
+	background-color: black;
+	/**/
+	cursor: url('images/IMG_CURSOR.png'), auto;
+	/**/
+	font-family: 'fixedsys_excelsior_3.01Rg', monaco, monospace;
+	color: white;
+	font-size: 30px;
+	/*overflow-x:hidden;*/
+}
+
+.audioplayer{
+	position:fixed;
+	top: 0px;
+	right: 0px;
+	width: 200px;
+	z-index:5;
+}
+
+
+img{
+	cursor: url('images/IMG_CURSOR_BUTTON.png'), auto;
+}
+
+h1{
+	font-size: 30pt;
+	
+	color: #0000AE;
+    text-shadow:
+    -1px -1px 0 white,
+    1px -1px 0 #FF00FF,
+    -1px 1px 0 #00FF00,
+    1px 1px 0 #FF00FF;
+	
+	margin: 5pt;
+	
+	display:inline-block;
+	
+	/*background-image: url("images/IMG_TILE_ANIMATED_PIXEL.gif");*/
+	background-color: black;
+	
+	animation: rotation 0.2s ease-out alternate infinite;
+
+}
+
+a, a:visited{
+	cursor:pointer;
+	
+	text-decoration: none;
+	color:white;
+	background-color:black;
+	/*transform*/
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+a:hover{
+	color:#2FFF00;
+	background-color:#0000AE;
+}
+
+/*STARTING PAGE*/
+
+.splash{
+	position: absolute;
+	width: 665px;
+	height: 100%;
+	background-color: black;
+	/*center*/
+	left: 50%;
+	top: 100px;
+	transform: translate(-50%, 0);
+	padding:30px;
+}
+
+#_splashtitle01{
+	position: absolute;
+	left: 50%;
+	top: -8%;
+	transform: translate(-50%, 0);
+}
+
+#_websiteintro{
+	width: 585px;
+	height: 460px;
+	background-color:black;
+	padding: 40px;
+	border: none;
+	overflow:hidden;
+}
+
+#_splashenter01{
+	margin-left: 70px;
+}
+
+/*potatopile is used in other areas too*/
+.potatopile{
+	position:fixed;
+	bottom:0px;
+	/**/
+	left: 50%;
+	transform: translate(-50%, 0);
+	z-index: -1;
+}
+
+/*MAIN PAGE*/
+
+#_maintitle01{
+	position:fixed;
+	left: 10px;
+	top: 10px;
+}
+
+.footer_tile{
+	position:fixed;
+	bottom:-30px;
+	left:0px;
+	/**/
+	background-image: url("images/IMG_FOOTERTILE.gif");
+	/**/
+	width:100%;
+	height:265px;
+}
+
+.windowcontainer{
+	position:absolute;
+	width:100%;
+	height:100%;
+	min-width: 1280px;
+	/*
+	top: 20%;
+	margin-bottom: 500px;
+	left: 50%;
+	transform: translate(-50%, 0);*/
+	margin-top: 100px;
+	margin-bottom: 700px;
+}
+
+.windows{
+	/*looks*/
+	position:absolute;
+	max-width: 500px;
+	background-color: black;
+	background-image: url("images/IMG_BACKGROUND_SML.png");
+	background-repeat: repeat-x;
+	padding: 5px;
+	/*first set of border*/
+	outline: 3px solid #0000AE;
+	box-shadow: 0px 0px 0px 5px #A9A9A9;
+	/*funky set of border*/
+	border: 2px solid white;
+	border-image: url(images/IMG_WATERLOOP.gif);
+    border-image-slice: 1;
+    border-image-repeat: round;
+	/*barely visible touch of color*/
+	text-shadow: 1px 0.2px #FF00FF;
+	/*floating
+	animation-name: floating;
+	animation-duration: 3s;
+	animation-iteration-count: infinite;
+	animation-timing-function: ease-in-out;*/
+}
+
+.laurels{
+	display:inline-block;
+	
+	color:white;
+	
+	text-shadow:
+    -1px -1px 0 black,
+    1px -1px 0 black,
+    -1px 3px 0 black,
+    1px 5px 0 black;
+	
+	background-image: url("images/LAURELS.png");
+	background-repeat:no-repeat;
+	background-position: center;
+	min-height:200px;
+	padding: 5px;
+	text-align:center;
+	
+	/*transform*/
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+	
+	cursor:pointer;
+}
+.laurels:hover{
+	color:#A9A9A9;
+}
+
+#_window01{
+	top: 100px;
+	left:10%;
+}
+#_window02{
+	top: 200px;
+	right:10%;
+}
+#_window03{
+	top: 700px;
+	left:10%;
+}
+#_window04{
+	top: 1420px;
+	right:10%;
+}
+#_window05{
+	top: 2500px;
+	right:10%;
+}
+#_window06{
+	top: 7000px;
+	left:10%;
+	margin-bottom: 150px;
+}
+
+/*catalogue selections*/
+
+.catalogue{
+	
+}
+
+.catalogue_title{
+	display:inline;
+	background-color:#00FF1F;
+	color:black;
+	/*transform*/
+	-webkit-transition: all 0.3s ease-out;
+	-o-transition: all 0.3s ease-out;
+	transition: all 0.3s ease-out;
+}
+.catalogue_title:hover{
+	color:white;
+}
+
+.catalogue_download{
+	display:inline;
+	background-color:#FF00FC;
+	font-size:25px;
+}
+
+.catalogue img{
+	float:left;
+	padding: 5px;
+}
+
+/*animations*/
+
+@keyframes rotation {
+  0% {
+	transform: rotate(-1deg);
+  } 100% {
+	transform: rotate(1deg);
+  }
+}
+
+@keyframes floating {
+    from { transform: translate(0,  0px); }
+    65%  { transform: translate(0, 20px); }
+    to   { transform: translate(0, -0px); }    
+}

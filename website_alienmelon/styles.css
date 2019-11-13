@@ -1,0 +1,19 @@
+.ahref_graves{
+	
+	color: white;
+	background-color: none;
+	transition: background-color 0.3s ease;
+}
+
+.ahref_graves:hover{
+	
+	transition: background-color 0.5s ease;
+	background-image: url("${resourcesFolderName}/IMG_BACKGROUND01.gif");
+	background-color: #FF00FF;
+	
+	color: #FFFFFF;
+}
+
+.ahref_graves:visited{
+	background-image: url("${resourcesFolderName}/IMG_27_SKELETONDANCE_01.gif");
+}

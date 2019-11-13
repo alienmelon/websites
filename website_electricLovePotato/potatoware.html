@@ -1,0 +1,235 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Welcome to the home of Electric Love Potatoes. Download your FREE Electric Love Potato here! No hidden fees.</title>
+	
+<link rel="stylesheet" type="text/css" href="styles.css">
+<script src="misc.js"></script>
+	
+<script>
+	
+	function _init(){
+		var arr_windows = ["_window00", "_window01", "_window02", "_window03", "_window04", "_window05", "_window06"];
+		
+		var arr_potatoes = []; //potatoes are saved to this for later...
+		var arr_img_potatoes = ["GERALD.gif", "IMG_RAIN_02.png", "IMG_RAIN_03.png", "IMG_RAIN.png", "IMG_RAIN_02.png", "IMG_RAIN_03.png", "IMG_RAIN.png"];
+		
+		var int_potatoes;//interval id
+		
+		//lazy copy/paste from last site...
+		function makethis(id, image, arr, appendto){
+			_makethis = document.createElement("div");
+			_makethis.id = id;
+			_makethis.style.position = "fixed";
+			_makethis.style.left = String(Math.random()*fp_returnDocWidth()) + 'px';
+			_makethis.style.bottom = String(Math.random()*fp_returnDocHeight()) + 'px';
+			//_makethis.style.cursor = "url('images/IMG_CURSOR.png'), auto";
+			_makethis.innerHTML = "<img src=" + image + ">";
+			//
+			_makethis.style.pointerEvents = "none";
+			//
+			if(appendto == null){
+				document.getElementsByTagName("body")[0].appendChild(_makethis);
+			}else{
+				_makethis.appendChild(appendto);
+			}
+			//
+			arr.push(id);
+		}
+		
+		function movepotatoes(){
+			for(j = 0; j < arr_potatoes.length; ++j){
+				var potatoes = document.getElementById(arr_potatoes[j]);
+				var potatoes_x = parseInt(potatoes.style.left);
+				potatoes_x += Math.random()*5;
+				potatoes.style.left = String(potatoes_x) + "px";
+				//
+				if(potatoes_x > fp_returnDocWidth()){
+					potatoes.style.left = String(Math.random()*fp_returnDocWidth()) + 'px';
+					potatoes.style.bottom = String(Math.random()*fp_returnDocHeight()) + 'px';
+				}
+			}
+		};
+		
+		//set navs
+		for(i = 0; i<arr_windows.length; ++i){
+			document.getElementById(arr_windows[i]).style.animation = "floating "+String(Math.ceil(Math.random()*5)+Math.ceil(Math.random()*2))+"s ease-in-out alternate infinite";
+		}
+		
+		//make tatoes
+		for (j=0; j<5; ++j){
+			makethis("potato"+String(j), "images/"+arr_img_potatoes[Math.ceil(Math.random()*arr_img_potatoes.length)-1], arr_potatoes, null);
+		}
+		
+		int_potatoes = setInterval(movepotatoes, 10);
+		
+	}
+	
+</script>
+	
+</head>
+
+<body onload="_init()">
+	<audio controls loop autoplay width="300" class="audioplayer">
+		<source src="audio/POTATOAMBIENCE.mp3" type="audio/mpeg">
+		<source src="audio/POTATOAMBIENCE.wav" type="audio/wav">
+	</audio>
+	<!-- background and windows !-->
+	<div class="windowcontainer">
+		<div id="_window00" class="windows" style="width:180pt">
+			<center>Welcome to the home of Electric Love Potatoes!</center>
+		</div>
+		<div id="_window01" class="windows">
+			<center><h1>ABOUT POTATOWARE</h1></center>
+			<font color="yellow">Potatoware is the future of screenmate, deskmate, and virtual pet applications™.</font> <font color="orange">It is software guaranteed to be completely useless™.</font>
+			<br><br>
+			<font color="pink">Our Electric Love Potatoes are ready to be your friend™!</font>
+			<br><br>
+			<font color="#00FF00">For more information, or troubleshooting tips, <a href="faq.html">read our FAQ.</a>
+				Alternatively, you may direct questions and concerns about potatoware to</font> <font color="#00ED0E"><a href="000001.html">our internet email address here.</a></font>
+		</div>
+		<div id="_window02" class="windows">
+			<center><h1>Critically Acclaimed!</h1></center>
+			<font color="##00FF21">Our Electric Love Potatoes are internet famous!</font><font color="##00B619"> Click on the following links to find out why...</font>
+			<br><br>
+				<a href="https://motherboard.vice.com/en_us/article/9a4k7p/let-this-electric-love-potato-onto-your-desktop-and-into-your-soul" target="_blank">
+					<div class="laurels">"We spend our days in a virtual wasteland of loneliness, so why not take this desktop-enabled Potato companion along for the ride?"
+					<br>
+					Motherboard
+				</div></a>
+			<br><br>
+			<a href="https://www.rockpapershotgun.com/2015/06/22/electric-love-potato-free/" target="_blank">
+				<div class="laurels">
+				"Could this be The Year of the Desktop Imaginary Friend?"
+				<br>
+				ROCK PAPER SHOTGUN
+			</div></a>
+			<br><br>
+			<a href="https://splinternews.com/i-tested-out-electric-love-potato-a-surrealist-deskto-1793848796" target="_blank">
+			<div class="laurels">
+				"A surrealist desktop assistant app that is like Clippy on acid."
+				<br>
+				Fusion.net
+			</div>
+			</a>
+			<br><br>
+			<a href="https://boingboing.net/2015/06/30/let-this-creepy-potato-be-your.html" target="_blank">
+			<div class="laurels">
+				"Let this creepy potato be your desktop assistant"
+				<br>
+				BoingBoing Offworld
+			</div>
+			</a>
+		</div>
+		<div id="_window03" class="windows">
+			<h1>Our OFFICIAL Potatoware Catalogue</h1>
+			<div class="catalogue">
+				<img src="images/IMG_ICON01.gif" alt="">
+				<a href="https://gamejolt.com/games/electric-love-potato/75231" target="_blank"><font class="catalogue_title">Electric Love Potato (ORIGINAL)</font></a>
+				<br>
+				Electric Love Potato is a virtual potato desktop assistant that offers positive reinforcement, serenades you as you work, and creates random potato recipes.
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://gamejolt.com/games/electric-love-potato/75231" target="_blank">Gamejolt</a> * <a href="https://alienmelon.itch.io/electric-love-potato" target="_blank">itch.io</a> <br> PLATFORMS: Windows, MAC</font>
+				<br><br>
+			</div>
+			<div class="catalogue">
+				<img src="images/IMG_ICON01.gif" alt="">
+				<a href="https://gamejolt.com/games/potatoware2/249660" target="_blank"><font class="catalogue_title">Electric Love Potato (Two Point OH!)</font></a>
+				<br>
+				Electric Love Potato (Two Point OH!) is the next generation potato desktop assistant. Much like its predecessor, it will shower you with compliments, love, appreciation, quality conversation, music, and now a variety of original potato art.
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://gamejolt.com/games/potatoware2/249660" target="_blank">Gamejolt</a> * <a href="https://alienmelon.itch.io/potatoware2" target="_blank">itch.io</a> <br> PLATFORMS: Windows, MAC</font>
+				<br><br>
+			</div>
+			<div class="catalogue">
+				<img src="images/IMG_ICON02.gif" alt="">
+				<a href="https://gamejolt.com/games/electric-love-potato-playlist-player/110084" target="_blank"><font class="catalogue_title">Electric Love Potato (Playlist Player)</font></a>
+				<br>
+				Electric Love Potato Playlist Player is the latest in state of the art potatoware for music aficionados. It features a potato capable of playing music, and supports all popular file types.
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://gamejolt.com/games/electric-love-potato-playlist-player/110084" target="_blank">Gamejolt</a> * <a href="https://alienmelon.itch.io/potato-playlist-player" target="_blank">itch.io</a> <br> PLATFORMS: Windows, MAC</font>
+				<br><br>
+			</div>
+			<div class="catalogue">
+				<img src="images/thumb_filemonitor.gif" alt="">
+				<a href="https://alienmelon.itch.io/electric-file-monitor" target="_blank"><font class="catalogue_title">ELECTRIC FILE MONITOR</font></a>
+				<br>
+				ELECTRIC FILE MONITOR is the latest in the cutting edge potatoware line. A full blown system security solution, as well as virus scanner, ELECTRIC FILE MONITOR will give you complete control over your filesystem. It is security like no other antimalware competitor. Be the boss of your own computer!
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://gamejolt.com/games/efm/371598" target="_blank">Gamejolt</a> * <a href="https://alienmelon.itch.io/electric-file-monitor" target="_blank">itch.io</a> <br> PLATFORMS: Windows, MAC</font>
+				<br><br>
+			</div>
+			<div class="catalogue">
+				<img src="images/IMG_ICON05.gif" alt="">
+				<a href="https://alienmelon.itch.io/intros2k17" target="_blank"><font class="catalogue_title">Potatoware: Intros 2k17</font></a>
+				<br>
+				Tantalize your viewership with a riveting intro! Create a state of the art custom intro for your website in a mater of SECONDS with Potatoware: Intros 2k17. Yes, these intros extend far beyond websites! Potatoware: Intros 2k17 can be used for games, seminars, powerpoints, or social media as well!
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://alienmelon.itch.io/intros2k17" target="_blank">itch.io</a> <br> PLATFORMS: Windows, MAC</font>
+				<br><br>
+			</div>
+			<div class="catalogue">
+				<img src="images/IMG_ICON07.png" alt="">
+				<a href="http://potatoware.alienmelon.com/potatowarejs/" target="_blank"><font class="catalogue_title">ELECTRIC_LOVE_POTATO.js</font></a>
+				<br>
+				Run this javascript based potatoware to add a fledgling Electric Love Potato to your website. Electric Love Potatoes are the ideal virtual assistant. With them enabled on your website, your visitors will no longer feel lost or lonely!
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://github.com/alienmelon/electric_love_potato.js" target="_blank">GITHUB</a> <br> PLATFORMS: WEB</font>
+				<br><br>
+			</div>
+			<div class="catalogue">
+				<img src="images/IMG_ICON03.gif" alt="">
+				<a href="https://alienmelon.itch.io/goodtatoes" target="_blank"><font class="catalogue_title">RELEASE_THE_POTATOES</font></a>
+				<br>
+				Have you ever wanted your desktop to be inundated with an irresponsible amount of potatoes? Look no further! RELEASE_THE_POTATOES floods your screen with a steady stream of potatoes.
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://alienmelon.itch.io/goodtatoes" target="_blank">itch.io</a> <br> PLATFORMS: Windows, MAC</font>
+				<br><br>
+			</div>
+			<div class="catalogue">
+				<img src="images/IMG_ICON06.gif" alt="">
+				<a href="https://alienmelon.itch.io/electric-love-bar" target="_blank"><font class="catalogue_title">Electric Love Bar (social love simulator 2k)</font></a>
+				<br>
+				The Electric Love Bar simulates love from the internet masses. It provides a small bar with an array of social media functionality such as: hearts, likes, shares, and a livestream of virtual fans eagerly watching your every move and speculating in the chat. The Electric Love Bar will provide you with a sense of company, belonging, and following.
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://alienmelon.itch.io/electric-love-bar" target="_blank">itch.io</a> <br> PLATFORMS: Windows, MAC</font>
+				<br><br>
+			</div>
+			<div class="catalogue">
+				<img src="images/IMG_ICON03.gif" alt="">
+				<a href="https://alienmelon.itch.io/potatoware-cursor" target="_blank"><font class="catalogue_title">Electric Love Potato: Potatoware Cursor</font></a>
+				<br>
+				Potatoware Cursor offers the option to replace your normal Mac cursor with a potato. It is designed for those who are hesitant about Electric Love Potatoes, but still want a potato on their desktop.
+				<br>
+				<font class="catalogue_download">DOWNLOAD MIRROR: <a href="https://alienmelon.itch.io/potatoware-cursor" target="_blank">itch.io</a> <br> PLATFORMS: Windows, MAC</font>
+				<br><br>
+			</div>
+		</div>
+		<div id="_window04" class="windows">
+			<h1>WATCH: In her own words (Video interview with the Electric Love Potato)</h1>
+			<div class="catalogue">
+				<a href="https://vimeo.com/133691422" target="_blank"><img src="images/IMG_VIDEO1.png" alt="">
+					<font class="catalogue_title">A video interview with star of the original Electric Love Potato.</font></a> <font color="yellow">Potatoware would like to honor the memory of Gerald. Gerald was buried so that she may complete her natural growth cycle, but was unfortunately eaten by an animal before she could finish.</font><a href="https://vimeo.com/133691422" target="_blank"><font color="#CF00FF"> RIP, Gerald. Gone but not forgotten.</font></a>
+				<br>
+				<br>
+			</div>
+		</div>
+		<div id="_window05" class="windows">
+			<a href="http://alienmelon.tumblr.com/" target="_blank"><h1>advertisement</h1></a>
+			<br>
+			<center><a href="http://alienmelon.tumblr.com/" target="_blank"><img src="images/IMG_BANANA.png" alt=""></a></center>
+		</div>
+		<div id="_window06" class="windows">
+			<h1>Help me! I have fallen into these potatoes and cannot escape!</h1>
+			<br>
+			<br>
+		</div>
+	</div>
+	
+	<!-- foreground !-->
+	<img id="_maintitle01" src="images/IMG_TITLE01.gif" alt="Potatoware...">
+	<div class="footer_tile" id="_footer_tile01"><a href="http://tetrageddon.com" target="_blank"><img src="images/IMG_RAIN_02.png" alt="click here to return to Tetrageddon Games"></a></div>
+	
+</body>
+</html>

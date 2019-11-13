@@ -1,0 +1,228 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>beware</title>
+	
+<script src="haunt_your_website/ghost.js"></script>
+<script src="GRAVITATOES/GRAVITATOES.js"></script>
+	
+<link href="https://fonts.googleapis.com/css?family=Patua+One" rel="stylesheet"> 
+	
+<script>
+	//call ghost
+	function sumon(){
+		ghost_init(true);
+		document.getElementById("tatghoul").style.visibility='hidden';
+	};
+	//
+	function evil_laugh(){
+		var aud_lol01 = new Audio("sounds/AUD_EVILLAUGH01.mp3");
+		var aud_lol02 = new Audio("sounds/AUD_EVILLAUGH02.mp3");
+		var aud_lol03 = new Audio("sounds/AUD_EVILLAUGH03.mp3");
+		var aud_lol04 = new Audio("sounds/AUD_EVILLAUGH04.mp3");
+		//
+		var arr_lols = [aud_lol01, aud_lol02, aud_lol03, aud_lol04];
+		//
+		arr_lols[Math.ceil(Math.random()*arr_lols.length)-1].play();
+	}
+	//
+	function hide_message1(){
+		document.getElementById("message1_parent").style.visibility='hidden';
+	}
+	//
+	function open_message1(){
+		document.getElementById("message1").innerHTML = "Sometime in 1997 a cutting edge cyberpet CD-Rom series was announced. It was promised to be a ground breaking collection of desktop companions, the likes of which would put shame to any competing virtual pet software.<br>It was highly anticipated until it vanished without a trace. All record of it, the company, publisher, and any associating third parties disappeared from the early web.<br><br>In 2001 a development team went missing and nobody knows why!!<br><br>The dates and timeframe are widely argued. There are a number of theories even. Nobody really knows when this happened, and records of it no longer exist.<br>One thing is clear, the people that worked on it DID exist, and all vanished at the same time.<br>Our hearts go out to the families of this corporate cover up.<br><br>In 2018 a mysterious CD-Rom surfaced, and was handed to an archival team. The team painstakingly restored what was on the disk. Its contents were, after much controversy, released to the general public.<br>This relic came to be known as Cyberpet Graveyard in digital archeology circles.<br>It is now confirmed to be the missing, and erased, virtual pet project from ~1997.<br><br>Little is known about its contents, since most digital archiving institutes refuse to speak of it, but it is an important relic nearly lost to computer history.<br><br>This website is a fansite, and is in no way associated with any institution. <a href='https://alienmelon.itch.io/graveyard' target='_blank'>Download the disk image</a> at your own risk.<br><br>Finally, please enjoy this animated gif of a man struggling to eat spaghetti:<br><br><center><img src='images/IMG_PASTAGUY_SMALL.gif' alt=''></center><br><br>Animated gifs courtesy of <br><a href='https://gifcities.org/' traget='_blank'>https://gifcities.org/</a> and <a href='http://tetrageddon.com' traget='_blank'>http://tetrageddon.com</a>";
+		document.getElementById("close_message").innerHTML = "CLOSE";
+		
+		document.getElementById("message1_parent").style.backgroundColor='black';
+		
+		document.getElementById("message1_parent").style.visibility='visible';
+	}
+	//
+	function init(){
+		///var aud_loop = new Audio("audio/AUD_MENU_LOOP_01.mp3");
+	}
+</script>
+	
+<style>
+	
+	.header{
+		/*position:fixed;
+		top:10px;*/
+	}
+	
+	#skull{
+		position: absolute;
+		right: 0px;
+		top:10px;
+		/*z-index: -1;*/
+	}
+	
+	#handwave{
+		position:absolute;
+		right: 200px;
+		z-index: -1;
+	}
+	
+	#beware{
+		width: 720px;
+		right: 360px;
+		top: 100px;
+		position: absolute;
+	}
+	
+	.gmedia{
+		background-color:black;
+		color:darkgrey;
+		
+		margin-top: 180px;
+		
+		/*padding: 30px;*/
+		height:400px;
+		background-image: url("images/IMG_STARS1.gif");
+		background-repeat: repeat;
+		position:relative;
+		
+	}
+	
+	#trailer{
+		margin-top: 40px;
+	}
+	
+	#tatghoul{
+		position: absolute;
+	    bottom: 0;
+	}
+
+	a, #backbtn, #close_message, #tatghoul, #skull, #beware, .footerbtns{
+		cursor: url('images/IMG_SKELETON_CLICK.gif'), auto;
+	}
+	
+	body{
+		min-height: 960px;
+		min-width: 640px;
+		cursor: url('images/IMG_SKELETON.gif'), auto;
+		
+		background: url(images/IMG_SEQ_SKYWALLPAPER.gif) no-repeat center center fixed; 
+		background-size: cover;
+		background-color: black;
+		
+		padding: 0;
+  		margin: 0;
+		
+		image-rendering: auto;
+		image-rendering: crisp-edges;
+		image-rendering: pixelated;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: -o-crisp-edges;
+		-ms-interpolation-mode: nearest-neighbor;
+	}
+	
+	#helps{
+		/*<img id="swamp" src="images/IMG_TILE_BOTTOM.gif" alt="">*/
+		height: 150px;
+		background: url(images/IMG_HELPS.gif) no-repeat center center fixed; 
+	}
+	
+	#download{
+		width:100%;
+		position: absolute;
+		bottom: 20px;
+	}
+	
+	.footer{
+		height: 650px;
+		width: 100%;
+		background: url(images/IMG_TILE_FOREST.gif) repeat-x; 
+		bottom: -20px;
+		position:relative;
+	}
+	
+	.footerbtns:hover{
+		width: 217px;
+		height: 218px;
+		content: url(images/skelwalk.gif);
+	}
+	
+	.messages_parent{
+		/*position: relative;*/
+		
+		position: absolute;
+  		
+		width: 100%;
+		
+		margin-top: 50px;
+		height: 300px;
+		
+		overflow-y:scroll;
+		
+		font-family: 'Patua One', "Lucida Sans Unicode", "Lucida Grande", sans-serif;
+		color:white;
+		font-size: 30px;
+		z-index: 10;
+		/*background-color:black;*/
+	}
+	
+	#message1{
+		padding: 30px;
+	}
+	
+	#close_message{
+		color:yellow;
+	}
+	
+	#backbtn{
+		bottom: -20px;
+		position:absolute;
+	}
+	
+	/*img{
+		image-rendering: auto;
+		image-rendering: crisp-edges;
+		image-rendering: pixelated;
+		image-rendering: -moz-crisp-edges;
+		image-rendering: -o-crisp-edges;
+		-ms-interpolation-mode: nearest-neighbor;
+	}*/
+</style>
+</head>
+
+<body onload="init()">
+	<div id="aud_controls">
+		<audio controls autoplay loop preload="none" width="100" height="50" id="snd_loop">
+		  <source src="sounds/AUD_MENU_LOOP_01.mp3" type="audio/mpeg">
+		  <source src="sounds/AUD_MENU_LOOP_01.wav" type="audio/wav">
+		</audio>
+	</div>
+	
+	<div class = "header">
+		<img id="skull" onclick="blowtato()" src="images/IMG_TITLE_SKULL.gif" alt="">
+		<img id="handwave" src="images/IMG_HANDWAVE.gif" alt="">
+		<img id="beware" onclick="evil_laugh()" src="images/IMG_TITLE.gif" alt="beware...">
+	</div>
+	<div class="gmedia">
+		<img id="tatghoul" onclick="sumon()" src="images/IMG_TATHOUL.gif" alt="">
+		<center><iframe id="trailer" width="560" height="315" src="https://www.youtube.com/embed/nZNrMNVe9VY" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></center>
+	</div>
+	
+	<div class="messages_parent" id="message1_parent">
+		<div id="close_message" onclick="hide_message1()"></div>
+		<div class="messages" id="message1"></div>
+	</div>
+	
+	<div id="helps"></div>
+	<div class="footer">
+		<div id="download">
+			<a href="http://unicornycopia.com"><img id="backbtn" src="images/IMG_HAND_HOME.gif" alt=""></a>
+			<center>
+				<a href="https://gamejolt.com/games/graveyard/351892" target="_self"><img class="footerbtns" src="images/IMG_DOWNLOAD_GJ.png" alt=""></a>
+				<a href="https://alienmelon.itch.io/graveyard" target="_self"><img class="footerbtns" src="images/IMG_DOWNLOAD_ITCH.png" alt=""></a>
+				<a href="http://unicornycopia.com/graveyard/screenshots/" target="_self"><img class="footerbtns" src="images/IMG_DOWNLOAD_SCREENSHOTS.png" alt=""></a>
+				<img class="footerbtns" onclick="open_message1()" src="images/IMG_DOWNLOAD_MESSAGE.png" alt="">
+			</center>
+			</div>
+	</div>
+	
+</body>
+</html>
